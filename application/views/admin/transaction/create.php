@@ -11,7 +11,7 @@
         <!-- card header  -->
         <div class="card-header p-4 bg-white d-flex justify-content-between">
             <h4 class="mb-0">Customer</h4>
-            <a class="btn btn-primary btn-sm" href="<?php echo base_url('admin/customer/create'); ?>">Add Cusromer</a>
+            <a class="btn btn-primary btn-sm" href="<?php echo base_url('admin/customer/create'); ?>">Add Customer</a>
         </div>
         <!-- card body  -->
         <div class="card-body">
@@ -19,7 +19,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="example-text-input" class="col-form-label">Nama Perusahaan <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="company" id="company" placeholder="Nama Perusahaan" required>
+                        <input class="form-control" type="text" name="company" autocomplete="off" id="company" placeholder="Nama Perusahaan" required>
                     </div>
                 </div>
 
@@ -30,7 +30,6 @@
                         <div class="invalid-feedback">Data Customer Harus Di isi.</div>
                     </div>
                 </div>
-
 
                 <div class="col-md-6">
                     <div class="form-group">
