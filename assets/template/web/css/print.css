@@ -1,0 +1,55 @@
+@font-face {
+	font-family: Inter;
+	src: url(../vendor/fonts/inter/Inter-Regular.ttf);
+}
+@font-face {
+	font-family: Inter;
+	src: url(../vendor/fonts/inter/Inter-Light.ttf);
+	font-weight: 100;
+}
+@font-face {
+	font-family: Inter;
+	src: url(../vendor/fonts/inter/Inter-Bold.ttf);
+	font-weight: 700;
+}
+body {
+	font-family: Inter;
+	font-size: 10px;
+}
+.container {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0px;
+	border: 1px solid green;
+}
+.wrapp {
+	margin: auto;
+}
+.row {
+	display: flex;
+	background-color: #fff;
+}
+.float-lef {
+	float: left;
+}
+.float-right {
+	float: right;
+}
+.w-50 {
+	width: 49%;
+	border: 1px solid red;
+}
+.text-align-right {
+	text-align: right;
+}
+table,
+td,
+th {
+	border: 1px solid black;
+}
+
+table {
+	width: 96%;
+	border-collapse: collapse;
+	font-size: 12px;
+}
