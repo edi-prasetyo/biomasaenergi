@@ -100,7 +100,7 @@ class Auth extends CI_Controller
 	}
 	public function _register()
 	{
-		$send_email_register = $this->pengaturan_model->sendemail_status_register();
+		$send_email_register = $this->pengaturan_model->sendemail_status_forgot();
 		if ($this->session->userdata('id')) {
 			redirect('admin/dashboard');
 		}

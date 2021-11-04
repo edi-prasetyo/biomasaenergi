@@ -66,11 +66,14 @@ $meta = $this->meta_model->get_meta();
                     Customer
                 </a>
             </li>
-
-
-
-
-
+            <li class="nav-item">
+                <a href="<?php echo base_url('admin/province'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "customer") {
+                                                                                        echo 'active';
+                                                                                    } ?>">
+                    <i class="feather-package mr-3  fa-fw"></i>
+                    Data Kota
+                </a>
+            </li>
 
             <p class="text-muted font-weight-bold text-uppercase px-3 small py-2 mb-0"><b>Web Front</b></p>
             <li class="nav-item">
@@ -104,6 +107,14 @@ $meta = $this->meta_model->get_meta();
                                                                                 } ?>">
                     <i class="feather-settings mr-3  fa-fw"></i>
                     Profile Web
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo base_url('admin/pengaturan'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "meta") {
+                                                                                            echo 'active';
+                                                                                        } ?>">
+                    <i class="feather-mail mr-3  fa-fw"></i>
+                    Email Manajemen
                 </a>
             </li>
         </ul>

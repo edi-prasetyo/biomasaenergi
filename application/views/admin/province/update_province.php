@@ -20,8 +20,8 @@
 
                 ?>
 
-                <div class="form-group">
-                    <label>Nama Kategori</label>
+                <div class="form-group mb-3">
+                    <label class="form-label">Nama Kategori</label>
                     <input type="text" class="form-control" name="province_name" value="<?php echo $province->province_name ?>">
                 </div>
 

@@ -55,4 +55,16 @@ class City extends CI_Controller
         ];
         $this->load->view('admin/layout/wrapp', $data, FALSE);
     }
+
+    //delete City
+    public function delete($id)
+    {
+        //Proteksi delete
+        is_login();
+        $city = $this->city_model->detail_city($id);
+        $data = ['id'   => $city->id];
+        $this->city_model->delete($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger">Data telah di Hapus</div>');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 }

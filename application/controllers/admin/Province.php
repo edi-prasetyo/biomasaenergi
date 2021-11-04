@@ -67,9 +67,9 @@ class Province extends CI_Controller
             $this->load->view('admin/layout/wrapp', $data, FALSE);
         } else {
             $data  = [
-                'user_id'                         => $this->session->userdata('id'),
+                'created_by'                         => $this->session->userdata('id'),
                 'province_name'                   => $this->input->post('province_name'),
-                'date_created'                    => date('Y-m-d H:i:s')
+                'created_at'                    => date('Y-m-d H:i:s')
             ];
             $this->province_model->create($data);
             $this->session->set_flashdata('message', 'Data telah ditambahkan');
@@ -84,7 +84,7 @@ class Province extends CI_Controller
         //Validasi
         $this->form_validation->set_rules(
             'province_name',
-            'Nama Kategori',
+            'Nama Provinsi',
             'required',
             array('required'                  => '%s Harus Diisi')
         );
@@ -100,9 +100,9 @@ class Province extends CI_Controller
         } else {
             $data  = [
                 'id'                            => $id,
-                'user_id'                         => $this->session->userdata('id'),
+                'updated_by'                         => $this->session->userdata('id'),
                 'province_name'                 => $this->input->post('province_name'),
-                'date_updated'                  => date('Y-m-d H:i:s')
+                'updated_at'                  => date('Y-m-d H:i:s')
             ];
             $this->province_model->update($data);
             $this->session->set_flashdata('message', 'Data telah di Update');
@@ -118,9 +118,10 @@ class Province extends CI_Controller
         $province = $this->province_model->detail_province($id);
         $data = ['id'   => $province->id];
         $this->province_model->delete($data);
-        $this->session->set_flashdata('message', 'Data telah di Hapus');
+        $this->session->set_flashdata('message', '<div class="alert alert-danger">Data telah di Hapus</div>');
         redirect(base_url('admin/province'), 'refresh');
     }
+
 
     public function view($id)
     {
@@ -171,9 +172,9 @@ class Province extends CI_Controller
         } else {
             $data  = array(
                 'province_id'           => $province_id,
-                'user_id'               => $this->session->userdata('id'),
+                'created_by'               => $this->session->userdata('id'),
                 'city_name'             => $this->input->post('city_name'),
-                'date_created'          => date('Y-m-d H:i:s')
+                'created_at'          => date('Y-m-d H:i:s')
             );
             $this->city_model->create($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissable fade show"><button class="close" data-dismiss="alert" aria-label="Close">×</button> Data telah ditambahkan</div>');
@@ -213,9 +214,9 @@ class Province extends CI_Controller
         } else {
             $data  = [
                 'id'                            => $id,
-                'user_id'                       => $this->session->userdata('id'),
+                'updated_by'                       => $this->session->userdata('id'),
                 'city_name'                     => $this->input->post('city_name'),
-                'date_updated'                  => date('Y-m-d H:i:s')
+                'updated_at'                  => date('Y-m-d H:i:s')
             ];
             $this->city_model->update($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissable fade show"><button class="close" data-dismiss="alert" aria-label="Close">×</button> Data telah di Update</div>');

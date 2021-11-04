@@ -1,6 +1,6 @@
 <div class="card">
-    <div class="card-header">
-        <b><?php echo $title; ?></b>
+    <div class="card-header d-flex justify-content-between align-items-start">
+        <h4 class="my-auto"><?php echo $title; ?></h4>
         <div class="card-tools">
             <?php include "create_province.php"; ?>
         </div>
@@ -32,7 +32,7 @@
                 <?php foreach ($province as $province) { ?>
                     <tr>
                         <td><?php echo $province->province_name; ?></td>
-                        <td> <a href="<?php echo base_url('admin/province/city/' . $province->id); ?>" class="btn btn-info btn-sm btn-block"><i class="fa fa-plus"></i> Tambah Kota / Kabupaten </a>
+                        <td> <a href="<?php echo base_url('admin/province/city/' . $province->id); ?>" class="btn btn-primary text-white btn-sm btn-block"><i class="fa fa-plus"></i> Tambah Kota / Kabupaten </a>
                         </td>
                         <td>
                             <?php include "update_province.php"; ?>

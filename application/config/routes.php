@@ -49,15 +49,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller']                    = 'home';
-$route['rental-mobil']                          = 'rental_mobil';
-$route['rental-mobil/order']                    = 'rental_mobil/order';
-$route['rental-mobil/order/(:any)']             = 'rental_mobil/order/$1';
-$route['rental-mobil/booking']                  = 'rental_mobil/booking';
-$route['rental-mobil/booking/(:any)']           = 'rental_mobil/booking/$1';
-$route['rental-mobil/order-success/(:any)']     = 'rental_mobil/order_success/$1';
-$route['rental-mobil/payment/(:any)']           = 'rental_mobil/payment/$1';
-// $route['category/(:any)']                       = 'category/index/$1';
+$route['default_controller']                    = 'auth';
 $route['404_override'] = 'oops';
 $route['translate_uri_dashes'] = FALSE;
 

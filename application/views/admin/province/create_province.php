@@ -17,8 +17,8 @@
                 echo form_open(base_url('admin/province'));
                 ?>
 
-                <div class="form-group">
-                    <label>Nama Provinsi</label>
+                <div class="form-group mb-3">
+                    <label class="form-label">Nama Provinsi</label>
                     <input type="text" class="form-control" name="province_name" placeholder="Nama Provinsi">
                     <?php echo form_error('province_name', '<small class="text-danger">', '</small>'); ?>
                 </div>

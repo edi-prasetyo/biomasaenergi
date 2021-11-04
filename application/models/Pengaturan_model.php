@@ -58,11 +58,11 @@ class Pengaturan_model extends CI_Model
     $query = $this->db->get();
     return $query->row();
   }
-  public function sendemail_status_register()
+  public function sendemail_status_forgot()
   {
     $this->db->select('*');
     $this->db->from('kirim_email');
-    $this->db->where('type', 'Register');
+    $this->db->where('type', 'Forgot');
     $query = $this->db->get();
     return $query->row();
   }

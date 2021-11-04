@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit<?php echo $city->id; ?>">
-    <i class="fa fa-edit"></i> Edit
+    <i class="feather-edit"></i>
 </button>
 
 <div class="modal modal-default fade" id="Edit<?php echo $city->id ?>">
@@ -15,13 +15,12 @@
                 <?php
                 //Error warning
                 echo validation_errors('<div class="alert alert-warning">', '</div>');
-
                 echo form_open(base_url('admin/province/update_city/' . $city->id));
 
                 ?>
 
-                <div class="form-group">
-                    <label>Nama Kota</label>
+                <div class="form-group mb-3">
+                    <label class="form-label"> Nama Kota</label>
                     <input type="text" class="form-control" name="city_name" value="<?php echo $city->city_name ?>">
                 </div>
 
