@@ -9,7 +9,6 @@
                         unset($_SESSION['message']); ?>
                     </div>
                     <?php
-
                     echo form_open_multipart('auth/forgotpassword',  array('class' => 'needs-validation', 'novalidate' => 'novalidate'))
                     ?>
                     <div class="input-group mb-4">
@@ -18,17 +17,12 @@
                         <div class="invalid-feedback">Silahkan masukan Email</div>
                     </div>
 
-                    <div class="d-flex justify-content-between align-items-start">
+                    <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-primary">
-                            Reset Password
+                            Kirim
                         </button>
-                        <a class="text-muted my-auto" href="<?php echo base_url('auth') ?> ">Kembali Ke Login</a>
-
-                        <?php echo form_close() ?>
-
-
-
                     </div>
+                    <?php echo form_close() ?>
 
                 </div>
             </div>
