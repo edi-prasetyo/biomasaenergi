@@ -250,25 +250,15 @@ class Auth extends CI_Controller
 			]
 		);
 		if ($this->form_validation->run() == false) {
-			if (!$this->agent->is_mobile()) {
-				// Desktop View
-				$data = [
-					'title'		=> 'Forgot Password',
-					'deskripsi'		=> 'Deskripsi',
-					'keywords'		=> 'Keywords',
-					'content'	=> 'front/auth/forgot_password'
-				];
-				$this->load->view('front/layout/wrapp', $data, FALSE);
-			} else {
-				// Mobile View
-				$data = [
-					'title'		=> 'Forgot Password',
-					'deskripsi'		=> 'Deskripsi',
-					'keywords'		=> 'Keywords',
-					'content'	=> 'mobile/auth/forgot_password'
-				];
-				$this->load->view('mobile/layout/wrapp', $data, FALSE);
-			}
+
+			// Desktop View
+			$data = [
+				'title'		=> 'Forgot Password',
+				'deskripsi'		=> 'Deskripsi',
+				'keywords'		=> 'Keywords',
+				'content'	=> 'front/auth/forgot_password'
+			];
+			$this->load->view('front/layout/wrapp', $data, FALSE);
 		} else {
 			$email = $this->input->post('email');
 			$user = $this->db->get_where('user', ['email' => $email, 'is_active' => 1])->row_array();
@@ -328,25 +318,15 @@ class Auth extends CI_Controller
 		);
 
 		if ($this->form_validation->run() == false) {
-			if (!$this->agent->is_mobile()) {
-				// Desktop View
-				$data = [
-					'title'		=> 'Change Password',
-					'deskripsi'		=> 'Deskripsi',
-					'keywords'		=> 'Keywords',
-					'content'	=> 'front/auth/change_password'
-				];
-				$this->load->view('front/layout/wrapp', $data, FALSE);
-			} else {
-				// Mobile View
-				$data = [
-					'title'		=> 'Change Password',
-					'deskripsi'		=> 'Deskripsi',
-					'keywords'		=> 'Keywords',
-					'content'	=> 'mobile/auth/change_password'
-				];
-				$this->load->view('mobile/layout/wrapp', $data, FALSE);
-			}
+
+			// Desktop View
+			$data = [
+				'title'		=> 'Change Password',
+				'deskripsi'		=> 'Deskripsi',
+				'keywords'		=> 'Keywords',
+				'content'	=> 'front/auth/change_password'
+			];
+			$this->load->view('front/layout/wrapp', $data, FALSE);
 		} else {
 			$password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
 			$email = $this->session->userdata('reset_email');
