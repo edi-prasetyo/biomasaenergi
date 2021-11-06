@@ -81,7 +81,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="example-text-input" class="col-form-label">Kode Pos <small class="text-success">( Optional )</small></label>
-                        <input class="form-control" type="text" name="postal_code" value="<?php echo set_value('postal_code'); ?>" placeholder=" Telepon">
+                        <input class="form-control" type="text" name="postal_code" value="<?php echo set_value('postal_code'); ?>" placeholder=" Kode Pos">
 
                     </div>
                 </div>

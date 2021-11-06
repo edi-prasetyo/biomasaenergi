@@ -56,7 +56,7 @@ class Auth extends CI_Controller
 					'keywords'		=> 'keywords',
 					'content'       => 'mobile/auth/login'
 				];
-				$this->load->view('mobile/layout/wrapp', $data, FALSE);
+				$this->load->view('front/layout/wrapp', $data, FALSE);
 			}
 		} else {
 			$this->_login();

@@ -67,7 +67,7 @@ $meta = $this->meta_model->get_meta();
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?php echo base_url('admin/province'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "customer") {
+                <a href="<?php echo base_url('admin/province'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "province") {
                                                                                         echo 'active';
                                                                                     } ?>">
                     <i class="feather-package mr-3  fa-fw"></i>
