@@ -82,7 +82,7 @@ class Berita_model extends CI_Model
   }
   public function berita_home()
   {
-    $this->db->select('berita.*,category.category_name, user.user_name');
+    $this->db->select('berita.*,category.category_name,category_slug, user.user_name');
     $this->db->from('berita');
     // Join
     $this->db->join('category', 'category.id = berita.category_id', 'LEFT');
@@ -91,6 +91,20 @@ class Berita_model extends CI_Model
     $this->db->where(['berita_status'     =>  'Publish']);
     $this->db->order_by('berita.id', 'DESC');
     $this->db->limit(3);
+    $query = $this->db->get();
+    return $query->result();
+  }
+  public function berita_footer()
+  {
+    $this->db->select('berita.*,category.category_name,category_slug, user.user_name');
+    $this->db->from('berita');
+    // Join
+    $this->db->join('category', 'category.id = berita.category_id', 'LEFT');
+    $this->db->join('user', 'user.id = berita.user_id', 'LEFT');
+    //End Join
+    $this->db->where(['berita_status'     =>  'Publish']);
+    $this->db->order_by('berita.id', 'ASC');
+    $this->db->limit(2);
     $query = $this->db->get();
     return $query->result();
   }
@@ -163,6 +177,20 @@ class Berita_model extends CI_Model
     //End Join
     $this->db->where(['category_id'     =>  $category_id]);
     $this->db->order_by('id', 'DESC');
+    $query = $this->db->get();
+    return $query->result();
+  }
+  public function berita_popular()
+  {
+    $this->db->select('berita.*,category.category_name, user.user_name');
+    $this->db->from('berita');
+    // Join
+    $this->db->join('category', 'category.id = berita.category_id', 'LEFT');
+    $this->db->join('user', 'user.id = berita.user_id', 'LEFT');
+    //End Join
+    $this->db->where(['berita_status'     =>  'Publish']);
+    $this->db->order_by('berita.berita_views', 'ASC');
+    $this->db->limit(5);
     $query = $this->db->get();
     return $query->result();
   }

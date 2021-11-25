@@ -78,11 +78,12 @@
         <?php echo form_close(); ?>
         <div id="section-to-print">
             <?php
-            if ($this->session->flashdata('messagefilter')) {
-                echo $this->session->flashdata('messagefilter');
-                unset($_SESSION['messagefilter']);
-            }
-            ?>
+            if ($start_date == null && $end_date == null && $company_name == null) : ?>
+            <?php else : ?>
+                <div class="alert alert-success">Data Penjualan dari tanggal <?php echo $start_date; ?> sampai <?php echo $end_date; ?> <?php echo $company_name; ?> </div>
+            <?php endif; ?>
+
+
             <div class="table-responsive">
                 <table class="table table-striped table-bordered print-friendly">
                     <thead>

@@ -6,7 +6,6 @@ $meta = $this->meta_model->get_meta();
     @media print {
         body * {
             visibility: hidden;
-            margin: 0;
         }
 
         #section-to-print,
@@ -20,7 +19,7 @@ $meta = $this->meta_model->get_meta();
             top: 0;
             width: 100%;
             margin-top: 0;
-            /* size: 210mm 297mm; */
+            size: 210mm 297mm;
         }
 
         .hidden-print {
@@ -41,6 +40,16 @@ $meta = $this->meta_model->get_meta();
 
     .mytable tbody tr td {
         font-size: 5px;
+    }
+
+    .product_table {
+        width: 100%;
+        margin: 15px 0 15px 0;
+    }
+
+    .product_table tbody tr td {
+        font-size: 15px;
+        padding: 5px;
     }
 </style>
 <div class="col-md-12 mx-auto">
@@ -91,24 +100,26 @@ $meta = $this->meta_model->get_meta();
                 <div class="invoice-content">
                     <!-- begin table-responsive -->
                     <div class="table-responsive">
-                        <table class="table table-bordered border-dark">
+                        <table class="product_table table-bordered border-dark">
                             <thead>
                                 <tr>
-                                    <th scope="col" width="5%">No</th>
-                                    <th scope="col">Nama Barang</th>
-                                    <th scope="col">Unit</th>
-                                    <th scope="col">Jumlah</th>
+                                    <th width="2%" style="font-size: 15px;" scope="col">No</th>
+                                    <th width="20%" style="font-size: 15px;" scope="col">Nama Barang</th>
+                                    <th width="38%" style="font-size: 15px;" scope="col">Spesifikasi</th>
+                                    <th width="20%" style="font-size: 15px;" scope="col">Unit</th>
+                                    <th width="20%" style="font-size: 15px;" scope="col">Jumlah</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th>1</th>
                                     <td><?php echo $transaction->product_name; ?></td>
+                                    <td><?php echo $transaction->product_spesification; ?></td>
                                     <td> Kg</td>
                                     <td><?php echo number_format($transaction->qty, 0, ",", "."); ?> Kg</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3" class="text-end fw-bold">Grand Total</td>
+                                    <td colspan="4" class="text-end fw-bold">Grand Total</td>
                                     <td><?php echo number_format($transaction->qty, 0, ",", "."); ?> Kg</td>
                                 </tr>
                             </tbody>
@@ -121,6 +132,7 @@ $meta = $this->meta_model->get_meta();
                         <span style="font-size: 13px;font-weight:bold;">Catatan :</span>
                         <ul style="font-size: 10px;">
                             <li>Periksa Kembali barang barang sesuai pesanan anda ketika sampai di lokasi</li>
+                            <li>Surat jalan ini sah bila ada stempel dari <?php echo $meta->title; ?></li>
                         </ul>
                     </div>
                     <div class="col-8">

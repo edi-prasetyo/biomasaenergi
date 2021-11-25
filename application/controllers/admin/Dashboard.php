@@ -19,10 +19,10 @@ class Dashboard extends CI_Controller
   public function index()
   {
     $user_member                  = $this->user_model->user_member();
-    $transaction                    = $this->transaction_model->get_alltransaction();
+    $transaction                  = $this->transaction_model->get_alltransaction();
     $pembelian                    = $this->transaction_model->get_pembelian();
     $penjualan                    = $this->transaction_model->get_penjualan();
-    $profit                    = $this->transaction_model->get_profit();
+    $profit                       = $this->transaction_model->get_profit();
     $count_user                   = $this->user_model->listUser();
     // var_dump($pembelian);
     // die;

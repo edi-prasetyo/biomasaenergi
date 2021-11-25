@@ -56,7 +56,7 @@ class Meta extends CI_Controller
         'google_tag'              => $this->input->post('google_tag'),
         'email'                   => $this->input->post('email'),
         'telepon'                 => $this->input->post('telepon'),
-        'whatsapp'                 => $this->input->post('whatsapp'),
+        'whatsapp'                => $this->input->post('whatsapp'),
         'alamat'                  => $this->input->post('alamat'),
         'link'                    => $this->input->post('link'),
         'map'                     => $this->input->post('map'),

@@ -25,7 +25,7 @@
                     <tr>
                         <td class="text-info"><?php echo $no; ?></td>
                         <td><?php echo $data->page_title; ?></td>
-                        <td><?php echo date('H:i', $data->date_updated); ?></td>
+                        <td><?php echo $data->date_updated; ?></td>
 
                         <td>
                             <a href="<?php echo base_url('page/detail/' . $data->page_slug); ?>" class="btn btn-sm btn-primary text-white"><i class="ti-eye"></i> Lihat</a>

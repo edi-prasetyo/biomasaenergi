@@ -1,5 +1,5 @@
-<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete<?php
-                                                                                            echo $data->id ?>">
+<button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Delete<?php
+                                                                                                    echo $data->id ?>">
     <i class="ti-trash"></i> Hapus
 </button>
 
@@ -8,15 +8,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h6 class="modal-title"> Menghapus Data</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="fa fa-window-close"></i></span></button>
             </div>
             <div class="modal-body">
-                <p>Apakah Anda Yakin Ingin Menghapus Data Artkel <b><?php echo $data->berita_title ?></b>?</p>
+                <p>Apakah Anda Yakin Ingin Menghapus Data Artkel <b><?php echo $data->berita_title_id ?></b>?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Batal</button>
-                <a href="<?php echo base_url('admin/berita/delete/' . $data->id) ?>" class="btn btn-danger pull-right"><i class="fa fa-close"></i> Ya, Hapus Artikel</a>
+                <button type="button" class="btn btn-primary pull-left" data-bs-dismiss="modal"><i class="fa fa-close"></i> Batal</button>
+                <a href="<?php echo base_url('admin/berita/delete/' . $data->id) ?>" class="btn btn-danger text-white pull-right"><i class="fa fa-close"></i> Ya, Hapus Artikel</a>
             </div>
         </div>
         <!-- /.modal-content -->

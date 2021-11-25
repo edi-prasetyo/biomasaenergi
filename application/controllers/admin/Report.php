@@ -64,6 +64,13 @@ class Report extends CI_Controller
         $total_profit           = $this->report_model->total_profit();
         $customer               = $this->customer_model->get_customer();
 
+        $transaction_month      = $this->report_model->transaction_month();
+        // $pembelian_month        = $this->report_model->pembelian_month();
+        // $penjualan_month        = $this->report_model->penjualan_month();
+        // $profit_month           = $this->report_model->profit_month();
+        // var_dump(count($transaction_month));
+        // die;
+
         $data = [
             'title'                     => 'Laporan Penjualan',
             'report'                    => $report,
@@ -72,8 +79,61 @@ class Report extends CI_Controller
             'total_penjualan'           => $total_penjualan,
             'total_profit'              => $total_profit,
             'customer'                  => $customer,
+            'transaction_month'         => $transaction_month,
             'pagination'                => $this->pagination->create_links(),
             'content'                   => 'admin/report/index'
+        ];
+        $this->load->view('admin/layout/wrapp', $data, FALSE);
+    }
+
+    public function cancel()
+    {
+        $config['base_url']         = base_url('admin/report/cancel/index/');
+        $config['total_rows']       = count($this->report_model->total_row_cancel());
+        $config['per_page']         = 10;
+        $config['uri_segment']      = 4;
+
+        $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+
+        $limit                      = $config['per_page'];
+        $start                      = ($this->uri->segment(4)) ? ($this->uri->segment(4)) : 0;
+
+        $this->pagination->initialize($config);
+        $cancel                 = $this->report_model->get_cancel($limit, $start);
+        // $total_unit             = $this->report_model->total_unit();
+        // $total_pembelian        = $this->report_model->total_pembelian();
+        // $total_penjualan        = $this->report_model->total_penjualan();
+        // $total_profit           = $this->report_model->total_profit();
+        // $customer               = $this->customer_model->get_customer();
+
+
+        $data = [
+            'title'                     => 'Laporan Cancel Order',
+            'cancel'                    => $cancel,
+            // 'total_unit'                => $total_unit,
+            // 'total_pembelian'           => $total_pembelian,
+            // 'total_penjualan'           => $total_penjualan,
+            // 'total_profit'              => $total_profit,
+            // 'customer'                  => $customer,
+            'pagination'                => $this->pagination->create_links(),
+            'content'                   => 'admin/report/cancel'
         ];
         $this->load->view('admin/layout/wrapp', $data, FALSE);
     }
@@ -102,22 +162,15 @@ class Report extends CI_Controller
         if ($this->input->post('customer_id') != NULL) {
             $customer_id = $this->input->post('customer_id');
             //$this->session->set_userdata(array("customer_id" => $customer_id));
+            $company = $this->customer_model->customer_detail($customer_id);
+            $company_name = $company->company;
         } else {
             if ($this->session->userdata('customer_id') != NULL) {
                 // $customer_id = $this->session->userdata('customer_id');
+                $company = $this->customer_model->customer_detail($customer_id);
+                $company_name = $company->company;
             }
         }
-
-        $company = $this->customer_model->customer_detail($customer_id);
-
-        if ($company == null) {
-        } else {
-            $company_name = $company->company;
-        }
-
-        // var_dump($start_date);
-        // die;
-
 
         $report                             = $this->report_model->filter_report($start_date, $end_date, $customer_id);
         $total_pembelian                    = $this->report_model->total_pricebuy_date($start_date, $end_date, $customer_id);
@@ -137,6 +190,9 @@ class Report extends CI_Controller
             'total_unit'                    => $total_unit,
             'total_profit'                  => $total_profit,
             'customer'                      => $customer,
+            'start_date'                    => $start_date,
+            'end_date'                      => $end_date,
+            'company_name'                  => $company_name,
             'content'                       => 'admin/report/filter'
         ];
         $this->session->set_flashdata('messagefilter',  '<div class="alert alert-success">Data Penjualan dari Tanggal ' . date(" j, F Y,", strtotime($start_date)) . ' Sampai Tanggal ' .  date(" j, F Y,", strtotime($end_date)) . '</div>');

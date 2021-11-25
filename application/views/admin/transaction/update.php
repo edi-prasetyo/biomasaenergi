@@ -78,14 +78,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="example-text-input" class="col-form-label">Nama Produk <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" name="product_name" id="product_name" required>
+                        <input class="form-control" type="text" name="product_name" value="<?php echo $transaction->product_name; ?>" readonly>
                         <div class="invalid-feedback">Data Produk Harus Di isi.</div>
                     </div>
                 </div>
 
 
-                <input class="form-control" type="hidden" name="product_id" readonly>
-                <input class="form-control" type="hidden" name="product_spesification" readonly>
+                <input class="form-control" type="hidden" name="product_id" value="<?php echo $transaction->product_id; ?>">
+                <input class="form-control" type="hidden" name="product_spesification" value="<?php echo $transaction->product_spesification; ?>">
 
                 <div class="col-md-6">
                     <div class="form-group">

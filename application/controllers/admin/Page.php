@@ -16,12 +16,6 @@ class Page extends CI_Controller
         parent::__construct();
         $this->load->library('pagination');
         $this->load->model('page_model');
-
-        $id = $this->session->userdata('id');
-        $user = $this->user_model->user_detail($id);
-        if ($user->role_id == 2) {
-            redirect('admin/dashboard');
-        }
     }
 
     public function index()
@@ -99,7 +93,7 @@ class Page extends CI_Controller
                 'page_slug'         =>  $page_slug . '-' . $slugcode,
                 'page_title'        => $this->input->post('page_title'),
                 'page_desc'         => $this->input->post('page_desc'),
-                'date_created'      => time()
+                'date_created'      => date('Y-m-d H:i:s')
             ];
             $this->page_model->create($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah ditambahkan</div>');
@@ -133,11 +127,13 @@ class Page extends CI_Controller
         } else {
 
             $data  = [
-                'id'                => $id,
-                'user_id'           => $this->session->userdata('id'),
-                'page_title'        => $this->input->post('page_title'),
-                'page_desc'         => $this->input->post('page_desc'),
-                'date_updated'      => time()
+                'id'                    => $id,
+                'user_id'               => $this->session->userdata('id'),
+                'page_title'            => $this->input->post('page_title'),
+                'page_title_en'         => $this->input->post('page_title_en'),
+                'page_desc'             => $this->input->post('page_desc'),
+                'page_desc_en'          => $this->input->post('page_desc_en'),
+                'date_updated'          => date('Y-m-d H:i:s')
             ];
             $this->page_model->update($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah di Update</div>');

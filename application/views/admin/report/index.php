@@ -1,7 +1,59 @@
+<div class="row mb-3">
+    <div class="col-md-3">
+        <div class="card mb-4 mb-xl-0 border-0 shadow-sm bg-primary">
+            <div class="card-body d-flex w-100 justify-content-between">
+                <div class="col">
+                    <h5 class="card-title text-white">Transaksi <?php echo
+                                                                date('F'); ?></h5>
+                    <span class="h3 font-weight-bold text-white"><?php echo count($transaction_month); ?></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-4 mb-xl-0 border-0 shadow-sm bg-success">
+            <div class="card-body d-flex w-100 justify-content-between">
+                <div class="col">
+                    <h5 class="card-title text-white">Pembelian <?php echo
+                                                                date('F'); ?></h5>
+                    <span class="h3 font-weight-bold text-white">100</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-4 mb-xl-0 border-0 shadow-sm bg-info">
+            <div class="card-body d-flex w-100 justify-content-between">
+                <div class="col">
+                    <h5 class="card-title text-white">Penjualan <?php echo
+                                                                date('F'); ?></h5>
+                    <span class="h3 font-weight-bold text-white">100</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card mb-4 mb-xl-0 border-0 shadow-sm bg-danger">
+            <div class="card-body d-flex w-100 justify-content-between">
+                <div class="col">
+                    <h5 class="card-title text-white">Profit <?php echo
+                                                                date('F'); ?></h5>
+                    <span class="h3 font-weight-bold text-white">100</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="card">
     <div class="card-header bg-white d-flex justify-content-between">
-        <h4 class="card-title my-auto"><?php echo $title; ?></h4>
-        <a href="<?php echo base_url('admin/report/filter'); ?>" class="btn btn-primary text-white"><i class="fa fa-filter"></i> Filter Laporan</a>
+        <div>
+            <h4 class="card-title my-auto"><?php echo $title; ?></h4>
+        </div>
+        <div>
+            <a href="<?php echo base_url('admin/report/cancel'); ?>" class="btn btn-danger text-white"><i class="fa fa-times"></i> cancel Order</a>
+            <a href="<?php echo base_url('admin/report/filter'); ?>" class="btn btn-primary text-white"><i class="fa fa-filter"></i> Filter Laporan</a>
+        </div>
     </div>
 
     <?php
@@ -10,6 +62,8 @@
         unset($_SESSION['message']);
     }
     ?>
+
+
 
     <div class="card-body">
         <!-- <a href="<?php //echo base_url('admin/report/export'); 

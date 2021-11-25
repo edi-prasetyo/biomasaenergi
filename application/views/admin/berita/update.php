@@ -17,15 +17,23 @@
         echo form_open_multipart('admin/berita/update/' . $berita->id);
         ?>
 
-        <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Judul Berita <span class="text-danger">*</span>
+        <div class="form-group row mb-3">
+            <label class="col-lg-3 col-form-label">Judul Berita (ID)<span class="text-danger">*</span>
             </label>
             <div class="col-lg-9">
-                <input type="text" class="form-control" name="berita_title" placeholder="Judul Berita" value="<?php echo $berita->berita_title ?>">
+                <input type="text" class="form-control" name="berita_title_id" placeholder="Judul Berita" value="<?php echo $berita->berita_title_id ?>">
                 <?php echo form_error('berita_title', '<small class="text-danger">', '</small>'); ?>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row mb-3">
+            <label class="col-lg-3 col-form-label">News Title (EN) <span class="text-danger">*</span>
+            </label>
+            <div class="col-lg-9">
+                <input type="text" class="form-control" name="berita_title_en" placeholder="News Title" value="<?php echo $berita->berita_title_en ?>">
+                <?php echo form_error('berita_title', '<small class="text-danger">', '</small>'); ?>
+            </div>
+        </div>
+        <div class="form-group row mb-3">
             <label class="col-lg-3 col-form-label">Kategori <span class="text-danger">*</span>
             </label>
             <div class="col-lg-9">
@@ -40,7 +48,7 @@
                 </select>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row mb-3">
             <label class="col-lg-3 col-form-label">Status Berita <span class="text-danger">*</span>
             </label>
             <div class="col-lg-9">
@@ -52,7 +60,7 @@
                 </select>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row mb-3">
             <label class="col-lg-3 col-form-label">Upload Gambar <span class="text-danger">*</span>
             </label>
             <div class="col-lg-9">
@@ -62,16 +70,25 @@
                 </div>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-lg-3 col-form-label">Deskripsi Berita <span class="text-danger">*</span>
+        <div class="form-group row mb-3">
+            <label class="col-lg-3 col-form-label">Deskripsi Berita (ID) <span class="text-danger">*</span>
             </label>
             <div class="col-lg-9">
 
-                <textarea class="form-control" id="summernote" name="berita_desc" placeholder="Deskripsi Berita"> <?php echo $berita->berita_desc ?></textarea>
+                <textarea class="form-control" id="summernote" name="berita_desc_id" placeholder="Deskripsi Berita"><?php echo $berita->berita_desc_id ?></textarea>
                 <?php echo form_error('berita_desc', '<small class="text-danger">', '</small>'); ?>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row mb-3">
+            <label class="col-lg-3 col-form-label">News Description (EN) <span class="text-danger">*</span>
+            </label>
+            <div class="col-lg-9">
+
+                <textarea class="form-control" id="summernote2" name="berita_desc_en"><?php echo $berita->berita_desc_en ?></textarea>
+                <?php echo form_error('berita_desc', '<small class="text-danger">', '</small>'); ?>
+            </div>
+        </div>
+        <div class="form-group row mb-3">
             <label class="col-lg-3 col-form-label">Keywords
             </label>
             <div class="col-lg-9">
@@ -79,7 +96,7 @@
             </div>
         </div>
 
-        <div class=" form-group row">
+        <div class=" form-group row mb-3">
             <div class="col-lg-3"></div>
             <div class="col-lg-9">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">

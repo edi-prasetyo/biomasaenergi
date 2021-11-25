@@ -10,16 +10,25 @@
                 echo form_open('admin/layanan/update/' . $layanan->id, array('class' => 'needs-validation', 'novalidate' => 'novalidate'));
                 ?>
 
-                <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">Nama Layanan</label>
+                <div class="form-group row mb-3">
+                    <label class="col-lg-3 col-form-label">Nama Layanan (ID )</label>
 
                     <div class="col-lg-9">
-                        <input type="text" class="form-control" name="layanan_name" value="<?php echo $layanan->layanan_name; ?>" required>
+                        <input type="text" class="form-control" name="layanan_name_id" value="<?php echo $layanan->layanan_name_id; ?>" required>
                         <div class="invalid-feedback">Silahkan masukan nama Layanan.</div>
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group row mb-3">
+                    <label class="col-lg-3 col-form-label">Service Name (EN )</label>
+
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control" name="layanan_name_en" value="<?php echo $layanan->layanan_name_en; ?>" required>
+                        <div class="invalid-feedback">Silahkan masukan nama Layanan.</div>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
                     <label class="col-lg-3 col-form-label">Icon Layanan</label>
 
                     <div class="col-lg-9">
@@ -28,27 +37,20 @@
                     </div>
                 </div>
 
-                <!-- Color Picker -->
-                <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">Warna Icon</label>
-                    <div class="col-lg-9">
-                        <div class="input-group my-colorpicker2">
-                            <input type="text" class="form-control" name="layanan_color">
-
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-square"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.input group -->
-                </div>
-                <!-- /.form group -->
-
-                <div class="form-group row">
-                    <label class="col-lg-3 col-form-label">Deskripsi Layanan <span class="text-danger">*</span>
+                <div class="form-group row mb-3">
+                    <label class="col-lg-3 col-form-label">Deskripsi Layanan (ID)<span class="text-danger">*</span>
                     </label>
                     <div class="col-lg-9">
-                        <textarea class="form-control" name="layanan_desc" required><?php echo $layanan->layanan_desc; ?></textarea>
+                        <textarea class="form-control" name="layanan_desc_id" required><?php echo $layanan->layanan_desc_id; ?></textarea>
+                        <div class="invalid-feedback">Silahkan masukan Deskripsi Layanan.</div>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                    <label class="col-lg-3 col-form-label">Service Description (EN)<span class="text-danger">*</span>
+                    </label>
+                    <div class="col-lg-9">
+                        <textarea class="form-control" name="layanan_desc_en" required><?php echo $layanan->layanan_desc_en; ?></textarea>
                         <div class="invalid-feedback">Silahkan masukan Deskripsi Layanan.</div>
                     </div>
                 </div>
@@ -77,9 +79,9 @@
             </div>
             <div class="card-body">
                 <h4>Remixicon</h4>
-                Lihat Code Icon <a href="https://remixicon.com/"> Disini</a><br>
+                Lihat Code Icon <a href="https://fontawesome.com/"> Disini</a><br>
                 Cara Penggunaan : <br><br>
-                <span class="alert alert-success"> &lt;i class="ri-home-2-line"&gt;&lt;/i&gt; </span><br><br>
+                <span class="alert alert-success"> &lt;i class="fas fa-home"&gt;&lt;/i&gt; </span><br><br>
 
                 Preview : <br><br>
                 <span class="alert alert-info"><i class="ri-home-2-line"></i> </span>

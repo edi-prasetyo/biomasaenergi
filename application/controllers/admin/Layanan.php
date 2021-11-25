@@ -94,13 +94,15 @@ class Layanan extends CI_Controller
             $slugcode = random_string('numeric', 5);
             $layanan_slug  = url_title($this->input->post('layanan_name'), 'dash', TRUE);
             $data  = [
-                'user_id'               => $this->session->userdata('id'),
-                'layanan_slug'          =>  $layanan_slug . '-' . $slugcode,
-                'layanan_name'          => $this->input->post('layanan_name'),
-                'layanan_icon'          => $this->input->post('layanan_icon'),
-                'layanan_color'         => $this->input->post('layanan_color'),
-                'layanan_desc'          => $this->input->post('layanan_desc'),
-                'date_created'          => time()
+                'user_id'                   => $this->session->userdata('id'),
+                'layanan_slug'              =>  $layanan_slug . '-' . $slugcode,
+                'layanan_name_id'           => $this->input->post('layanan_name_id'),
+                'layanan_name_en'           => $this->input->post('layanan_name_en'),
+                'layanan_icon'              => $this->input->post('layanan_icon'),
+                'layanan_color'             => $this->input->post('layanan_color'),
+                'layanan_desc_id'           => $this->input->post('layanan_desc_id'),
+                'layanan_desc_en'           => $this->input->post('layanan_desc_en'),
+                'created_at'                => date('Y-m-d H:i:s')
             ];
             $this->layanan_model->create($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah ditambahkan</div>');
@@ -113,13 +115,13 @@ class Layanan extends CI_Controller
         $layanan = $this->layanan_model->detail_layanan($id);
 
         $this->form_validation->set_rules(
-            'layanan_name',
+            'layanan_name_id',
             'Nama Layanan',
             'required',
             array('required'         => '%s Harus Diisi')
         );
         $this->form_validation->set_rules(
-            'layanan_desc',
+            'layanan_desc_id',
             'Deskripsi Halaman',
             'required',
             array('required'         => '%s Harus Diisi')
@@ -136,11 +138,13 @@ class Layanan extends CI_Controller
             $data  = [
                 'id'                        => $id,
                 'user_id'                   => $this->session->userdata('id'),
-                'layanan_name'              => $this->input->post('layanan_name'),
+                'layanan_name_id'           => $this->input->post('layanan_name_id'),
+                'layanan_name_en'           => $this->input->post('layanan_name_en'),
                 'layanan_icon'              => $this->input->post('layanan_icon'),
-                'layanan_color'              => $this->input->post('layanan_color'),
-                'layanan_desc'              => $this->input->post('layanan_desc'),
-                'date_updated'              => time()
+                'layanan_color'             => $this->input->post('layanan_color'),
+                'layanan_desc_id'           => $this->input->post('layanan_desc_id'),
+                'layanan_desc_en'           => $this->input->post('layanan_desc_en'),
+                'updated_at'                => date('Y-m-d H:i:s')
             ];
             $this->layanan_model->update($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah di Update</div>');

@@ -34,13 +34,18 @@ $meta = $this->meta_model->get_meta();
   <meta name="twitter:title" content="<?php echo $meta->title ?>" />
 
 
+
   <!-- Vendor CSS Files -->
   <!-- <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/web/vendor/bootstrap/css/bootstrap.min.css"> -->
-  <link href="<?php echo base_url('assets/template/web/css/custom.css'); ?>" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/front/vendor/offcanvas/offcanvas.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/template/web/vendor/offcanvas/offcanvas.css">
   <link href="<?php echo base_url('assets/template/web/vendor/icons/feather-icons/feather.css'); ?>" rel="stylesheet">
-  <!-- Font CSS File -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/template/front/fonts/open-sans/styles.css">
+  <link href="<?php echo base_url('assets/template/web/vendor/icons/fontawesome/css/all.min.css'); ?>" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url('assets/template/web/vendor/bootstrap-icons/bootstrap-icons.css'); ?>">
+  <!-- flag-icon-css -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/template/web/vendor/flag-icon-css/css/flag-icon.min.css'); ?>">
+  <!-- Custom CSS File -->
+  <link href="<?php echo base_url('assets/template/web/css/style.css'); ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/template/web/css/custom.css'); ?>" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column min-vh-100">

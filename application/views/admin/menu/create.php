@@ -13,15 +13,23 @@
             echo form_open('admin/menu/create', array('class' => 'needs-validation', 'novalidate' => 'novalidate'));
             ?>
 
-            <div class="form-group row">
-                <label class="col-lg-3 col-form-label">Nama Menu <span class="text-danger">*</span>
+            <div class="form-group row mb-3">
+                <label class="col-lg-3 col-form-label">Nama Menu (ID) <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-6">
-                    <input type="text" class="form-control" name="nama_menu_ind" placeholder="Nama Menu.." required>
+                    <input type="text" class="form-control" name="name_id" placeholder="Nama Menu.." required>
                     <div class="invalid-feedback">Silahkan masukan nama Menu</div>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row mb-3">
+                <label class="col-lg-3 col-form-label">Menu Name (EN) <span class="text-danger">*</span>
+                </label>
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" name="name_en" placeholder="Menu Name.." required>
+                    <div class="invalid-feedback">Silahkan masukan nama Menu</div>
+                </div>
+            </div>
+            <div class="form-group row mb-3">
                 <label class="col-lg-3 col-form-label">Url <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-6">
@@ -30,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-lg-3 col-form-label">Urutan <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-6">
@@ -38,7 +46,7 @@
                     <div class="invalid-feedback">Silahkan masukan Urutan Menu</div>
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">

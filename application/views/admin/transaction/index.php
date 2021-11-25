@@ -46,12 +46,35 @@
                     <td>
 
 
-                        <a href="<?php echo base_url('admin/transaction/update/') . $data->id; ?>" class="btn btn-primary btn-sm text-white"><i class="feather-edit"></i></a>
+                        <!-- <a href="<?php echo base_url('admin/transaction/update/') . $data->id; ?>" class="btn btn-primary btn-sm text-white"><i class="feather-edit"></i></a> -->
                         <a href="<?php echo base_url('admin/transaction/detail/') . $data->id; ?>" class="btn btn-primary btn-sm text-white"><i class="feather-eye"></i></a>
+                        <button type="button" class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#Cancel<?php echo $data->id; ?>">
+                            <i class="fa fa-times"></i>
+                        </button>
 
-                        <!-- <a href="<?php echo base_url('admin/transaction/invoice/') . $data->id; ?>" class="btn btn-warning btn-sm text-dark"><i class="feather-file-text"></i> Invoice</a> -->
-                        <!-- <a href="<?php echo base_url('admin/transaction/shipping/') . $data->id; ?>" class="btn btn-danger btn-sm text-white"><i class="feather-printer"></i> Surat Jalan</a> -->
-                        <?php include "delete.php"; ?>
+                        <div class="modal modal-default fade" id="Cancel<?php echo $data->id ?>">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Cancel Transaksi</h4>
+                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        Anda Yakin akan membatalkan Transaksi ini?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary pull-right" data-bs-dismiss="modal"><i class="fa fa-close"></i> Tutup</button>
+                                        <a href="<?php echo base_url('admin/transaction/cancel/' . $data->id); ?>" class="btn btn-danger text-white">Ya Batalkan</a>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+
                     </td>
                 </tr>
 

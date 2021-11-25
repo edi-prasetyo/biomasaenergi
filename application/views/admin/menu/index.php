@@ -23,7 +23,7 @@
             </thead>
             <?php foreach ($list_menu as $data) { ?>
                 <tr>
-                    <td><?php echo $data->nama_menu_ind; ?></td>
+                    <td><?php echo $data->name_id; ?><br><i><?php echo $data->name_en; ?></i></td>
                     <td><?php echo $data->url; ?></td>
                     <td><?php echo $data->urutan; ?></td>
                     <td>

@@ -240,7 +240,6 @@ class Transaction extends CI_Controller
                 'price_sell'                => $price_sell,
                 'profit'                    => $profit,
                 'payment'                   => $this->input->post('payment'),
-                'payment_status'            => 'Paid',
                 'updated_at'                => date('Y-m-d H:i:s')
             ];
             $this->transaction_model->update($data);
@@ -306,6 +305,17 @@ class Transaction extends CI_Controller
         ];
         $this->load->view('admin/transaction/print_delivery', $data, FALSE);
     }
+    public function cancel($id)
+    {
+        is_login();
+        $data = [
+            'id'                        => $id,
+            'status'                    => 0,
+        ];
+        $this->transaction_model->update($data);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger">Transaksi telah di cancel</div>');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
     public function delete($id)
     {
         is_login();
@@ -314,5 +324,27 @@ class Transaction extends CI_Controller
         $this->transaction_model->delete($data);
         $this->session->set_flashdata('message', '<div class="alert alert-danger">Data telah di Hapus</div>');
         redirect(base_url('admin/transaction'), 'refresh');
+    }
+    function convertpdf()
+    {
+
+
+        // Get output html
+        $html = $this->output->get_output();
+
+        // Load pdf library
+        $this->load->library('pdf');
+
+        // Load HTML content
+        $this->pdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $this->pdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $this->pdf->render();
+
+        // Output the generated PDF (1 = download and 0 = preview)
+        $this->pdf->stream("welcome.pdf", array("Attachment" => 0));
     }
 }

@@ -63,7 +63,7 @@ class Berita extends CI_Controller
   {
     $category = $this->category_model->get_category();
     $this->form_validation->set_rules(
-      'berita_title',
+      'berita_title_id',
       'Judul Berita',
       'required',
       [
@@ -71,7 +71,7 @@ class Berita extends CI_Controller
       ]
     );
     $this->form_validation->set_rules(
-      'berita_desc',
+      'berita_desc_id',
       'Deskripsi Berita',
       'required',
       [
@@ -109,13 +109,15 @@ class Berita extends CI_Controller
         $this->load->library('image_lib', $config);
         $this->image_lib->resize();
         $slugcode = random_string('numeric', 5);
-        $berita_slug  = url_title($this->input->post('berita_title'), 'dash', TRUE);
+        $berita_slug  = url_title($this->input->post('berita_title_id'), 'dash', TRUE);
         $data  = [
           'user_id'                 => $this->session->userdata('id'),
           'category_id'             => $this->input->post('category_id'),
           'berita_slug'             => $slugcode . '-' . $berita_slug,
-          'berita_title'            => $this->input->post('berita_title'),
-          'berita_desc'             => $this->input->post('berita_desc'),
+          'berita_title_id'            => $this->input->post('berita_title_id'),
+          'berita_title_en'            => $this->input->post('berita_title_en'),
+          'berita_desc_id'             => $this->input->post('berita_desc_id'),
+          'berita_desc_en'             => $this->input->post('berita_desc_en'),
           'berita_gambar'           => $upload_data['uploads']['file_name'],
           'berita_status'           => $this->input->post('berita_status'),
           'berita_keywords'         => $this->input->post('berita_keywords'),
@@ -142,13 +144,13 @@ class Berita extends CI_Controller
 
     $valid = $this->form_validation;
     $valid->set_rules(
-      'berita_title',
+      'berita_title_id',
       'Judul Berita',
       'required',
       ['required'                   => '%s harus diisi']
     );
     $valid->set_rules(
-      'berita_desc',
+      'berita_desc_id',
       'Isi Berita',
       'required',
       ['required'                   => '%s harus diisi']
@@ -196,8 +198,10 @@ class Berita extends CI_Controller
             'id'                      => $id,
             'user_id'                 => $this->session->userdata('id'),
             'category_id'             => $this->input->post('category_id'),
-            'berita_title'            => $this->input->post('berita_title'),
-            'berita_desc'             => $this->input->post('berita_desc'),
+            'berita_title_id'            => $this->input->post('berita_title_id'),
+            'berita_title_en'            => $this->input->post('berita_title_en'),
+            'berita_desc_id'             => $this->input->post('berita_desc_id'),
+            'berita_desc_en'             => $this->input->post('berita_desc_en'),
             'berita_gambar'           => $upload_data['uploads']['file_name'],
             'berita_status'           => $this->input->post('berita_status'),
             'berita_keywords'         => $this->input->post('berita_keywords'),
@@ -214,8 +218,10 @@ class Berita extends CI_Controller
             'id'                        => $id,
             'user_id'                   => $this->session->userdata('id'),
             'category_id'               => $this->input->post('category_id'),
-            'berita_title'              => $this->input->post('berita_title'),
-            'berita_desc'               => $this->input->post('berita_desc'),
+            'berita_title_id'            => $this->input->post('berita_title_id'),
+            'berita_title_en'            => $this->input->post('berita_title_en'),
+            'berita_desc_id'             => $this->input->post('berita_desc_id'),
+            'berita_desc_en'             => $this->input->post('berita_desc_en'),
             'berita_status'             => $this->input->post('berita_status'),
             'berita_keywords'           => $this->input->post('berita_keywords'),
             'date_updated'              => date('Y-m-d H:i:s')
@@ -242,6 +248,7 @@ class Berita extends CI_Controller
 
     if ($berita->berita_gambar != "") {
       unlink('./assets/img/artikel/' . $berita->berita_gambar);
+      unlink('./assets/img/artikel/thumbs/' . $berita->berita_gambar);
     }
 
     $data = ['id'                   => $berita->id];

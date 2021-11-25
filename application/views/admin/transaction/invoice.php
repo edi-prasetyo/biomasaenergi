@@ -32,6 +32,16 @@ $meta = $this->meta_model->get_meta();
         margin: 0mm;
         size: 210mm 297mm;
     }
+
+    .product_table {
+        width: 100%;
+        margin: 15px 0 15px 0;
+    }
+
+    .product_table tbody tr td {
+        font-size: 15px;
+        padding: 5px;
+    }
 </style>
 <div class="col-md-8 mx-auto">
     <div class="card">
@@ -86,11 +96,12 @@ $meta = $this->meta_model->get_meta();
                 <div class="invoice-content">
                     <!-- begin table-responsive -->
                     <div class="table-responsive">
-                        <table class="table table-bordered border-dark">
+                        <table class="product_table table-bordered border-dark">
                             <thead>
                                 <tr>
                                     <th scope="col" width="5%">No</th>
                                     <th scope="col">Produk</th>
+                                    <th scope="col">Spesifikasi</th>
                                     <th scope="col">Qty</th>
                                     <th scope="col">Harga</th>
                                 </tr>
@@ -99,11 +110,12 @@ $meta = $this->meta_model->get_meta();
                                 <tr>
                                     <th>1</th>
                                     <td><?php echo $transaction->product_name; ?></td>
+                                    <td><?php echo $transaction->product_spesification; ?></td>
                                     <td><?php echo number_format($transaction->qty, 0, ",", "."); ?> KG</td>
                                     <td>Rp. <?php echo number_format($transaction->price_sell, 0, ",", "."); ?></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3" class="text-end fw-bold">Grand Total</td>
+                                    <td colspan="4" class="text-end fw-bold">Grand Total</td>
                                     <td>Rp. <?php echo number_format($transaction->price_sell, 0, ",", "."); ?></td>
                                 </tr>
                             </tbody>

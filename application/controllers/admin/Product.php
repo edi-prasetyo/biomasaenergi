@@ -84,14 +84,17 @@ class Product extends CI_Controller
                 $slugcode = random_string('numeric', 5);
                 $product_slug  = url_title($this->input->post('product_name'), 'dash', TRUE);
                 $data  = [
-                    'created_by'            => $this->session->userdata('id'),
-                    'product_slug'          => $slugcode . '-' . $product_slug,
-                    'product_name'          => $this->input->post('product_name'),
-                    'description'           => $this->input->post('description'),
-                    'spesification'         => $this->input->post('spesification'),
-                    'product_img'           => $upload_data['uploads']['file_name'],
-                    'product_keywords'      => $this->input->post('product_keywords'),
-                    'created_at'            => date('Y-m-d H:i:s')
+                    'created_by'                => $this->session->userdata('id'),
+                    'product_slug'              => $slugcode . '-' . $product_slug,
+                    'product_name'              => $this->input->post('product_name'),
+                    'product_name_en'           => $this->input->post('product_name_en'),
+                    'description'               => $this->input->post('description'),
+                    'description_en'            => $this->input->post('description_en'),
+                    'spesification'             => $this->input->post('spesification'),
+                    'spesification_en'          => $this->input->post('spesification_en'),
+                    'product_img'               => $upload_data['uploads']['file_name'],
+                    'product_keywords'          => $this->input->post('product_keywords'),
+                    'created_at'                => date('Y-m-d H:i:s')
                 ];
                 $this->product_model->create($data);
                 $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah ditambahkan</div>');
@@ -163,14 +166,17 @@ class Product extends CI_Controller
                     }
                     //End Hapus Gambar
                     $data  = array(
-                        'id'                    => $id,
-                        'updated_by'            => $this->session->userdata('id'),
-                        'product_name'          => $this->input->post('product_name'),
-                        'description'           => $this->input->post('description'),
-                        'spesification'         => $this->input->post('spesification'),
-                        'product_img'           => $upload_data['uploads']['file_name'],
-                        'product_keywords'      => $this->input->post('product_keywords'),
-                        'updated_at'            => date('Y-m-d H:i:s')
+                        'id'                        => $id,
+                        'updated_by'                => $this->session->userdata('id'),
+                        'product_name'              => $this->input->post('product_name'),
+                        'product_name_en'           => $this->input->post('product_name_en'),
+                        'description'               => $this->input->post('description'),
+                        'description_en'            => $this->input->post('description_en'),
+                        'spesification'             => $this->input->post('spesification'),
+                        'spesification_en'          => $this->input->post('spesification_en'),
+                        'product_img'               => $upload_data['uploads']['file_name'],
+                        'product_keywords'          => $this->input->post('product_keywords'),
+                        'updated_at'                => date('Y-m-d H:i:s')
                     );
                     $this->product_model->update($data);
                     $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah Diedit</div>');
@@ -181,13 +187,16 @@ class Product extends CI_Controller
                 // Hapus Gambar Lama Jika ada upload gambar baru
                 if ($product->product_img != "")
                     $data  = array(
-                        'id'                    => $id,
-                        'updated_by'            => $this->session->userdata('id'),
-                        'product_name'          => $this->input->post('product_name'),
-                        'description'           => $this->input->post('description'),
-                        'spesification'         => $this->input->post('spesification'),
-                        'product_keywords'      => $this->input->post('product_keywords'),
-                        'updated_at'            => date('Y-m-d H:i:s')
+                        'id'                        => $id,
+                        'updated_by'                => $this->session->userdata('id'),
+                        'product_name'              => $this->input->post('product_name'),
+                        'product_name_en'           => $this->input->post('product_name_en'),
+                        'description'               => $this->input->post('description'),
+                        'description_en'            => $this->input->post('description_en'),
+                        'spesification'             => $this->input->post('spesification'),
+                        'spesification_en'          => $this->input->post('spesification_en'),
+                        'product_keywords'          => $this->input->post('product_keywords'),
+                        'updated_at'                => date('Y-m-d H:i:s')
                     );
                 $this->product_model->update($data);
                 $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah Diedit</div>');

@@ -9,5 +9,5 @@ if ($this->session->userdata('role_id') == 1 || $this->session->userdata('role_i
     require_once('content.php');
     require_once('footer.php');
 } else {
-    redirect('home');
+    redirect('auth');
 }

@@ -12,16 +12,24 @@
             echo form_open('admin/menu/update/' . $menu->id);
             ?>
 
-            <div class="form-group row">
-                <label class="col-lg-3 col-form-label">Nama Menu <span class="text-danger">*</span>
+            <div class="form-group row mb-3">
+                <label class="col-lg-3 col-form-label">Nama Menu (ID) <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-6">
-                    <input type="text" class="form-control" name="nama_menu_ind" value="<?php echo $menu->nama_menu_ind; ?>">
+                    <input type="text" class="form-control" name="name_id" value="<?php echo $menu->name_id; ?>">
+
+                </div>
+            </div>
+            <div class="form-group row mb-3">
+                <label class="col-lg-3 col-form-label">Menu Name (EN) <span class="text-danger">*</span>
+                </label>
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" name="name_en" value="<?php echo $menu->name_en; ?>">
 
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-lg-3 col-form-label">Url <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-6">
@@ -29,14 +37,14 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-lg-3 col-form-label">Urutan <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-6">
                     <input type="text" class="form-control" name="urutan" value="<?php echo $menu->urutan; ?>">
                 </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">

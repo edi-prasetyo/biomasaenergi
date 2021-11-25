@@ -13,7 +13,8 @@ class Report_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('transaction');
-        $this->db->order_by('id', 'DESC');
+        $this->db->where('transaction.status', 1);
+        $this->db->order_by('created_at', 'ASC');
         $query = $this->db->get();
         return $query->result();
     }
@@ -21,6 +22,7 @@ class Report_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('transaction');
+        $this->db->where('transaction.status', 1);
         $this->db->order_by('id', 'DESC');
         $this->db->limit(3);
         $query = $this->db->get();
@@ -30,6 +32,17 @@ class Report_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('transaction');
+        $this->db->where('transaction.status', 1);
+        $this->db->order_by('id', 'DESC');
+        $this->db->limit($limit, $start);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function get_cancel($limit, $start)
+    {
+        $this->db->select('*');
+        $this->db->from('transaction');
+        $this->db->where('transaction.status', 0);
         $this->db->order_by('id', 'DESC');
         $this->db->limit($limit, $start);
         $query = $this->db->get();
@@ -39,6 +52,19 @@ class Report_model extends CI_Model
     {
         $this->db->select('transaction.*, user.user_name');
         $this->db->from('transaction');
+        $this->db->where('transaction.status', 1);
+        // Join
+        $this->db->join('user', 'user.id = transaction.created_by', 'LEFT');
+        //End Join
+        $this->db->order_by('transaction.id', 'DESC');
+        $query = $this->db->get();
+        return $query->result();
+    }
+    public function total_row_cancel()
+    {
+        $this->db->select('transaction.*, user.user_name');
+        $this->db->from('transaction');
+        $this->db->where('transaction.status', 0);
         // Join
         $this->db->join('user', 'user.id = transaction.created_by', 'LEFT');
         //End Join
@@ -52,6 +78,7 @@ class Report_model extends CI_Model
     {
         $this->db->select_sum('qty');
         $query = $this->db->get('transaction');
+        $this->db->where('transaction.status', 1);
         if ($query->num_rows() > 0) {
             return $query->row()->qty;
         } else {
@@ -63,6 +90,7 @@ class Report_model extends CI_Model
     {
         $this->db->select_sum('price_buy');
         $query = $this->db->get('transaction');
+        $this->db->where('transaction.status', 1);
         if ($query->num_rows() > 0) {
             return $query->row()->price_buy;
         } else {
@@ -74,6 +102,7 @@ class Report_model extends CI_Model
     {
         $this->db->select_sum('price_sell');
         $query = $this->db->get('transaction');
+        $this->db->where('transaction.status', 1);
         if ($query->num_rows() > 0) {
             return $query->row()->price_sell;
         } else {
@@ -84,6 +113,7 @@ class Report_model extends CI_Model
     public function total_profit()
     {
         $this->db->select_sum('profit');
+        $this->db->where('transaction.status', 1);
         $query = $this->db->get('transaction');
         if ($query->num_rows() > 0) {
             return $query->row()->profit;
@@ -98,6 +128,7 @@ class Report_model extends CI_Model
         $this->db->from('transaction');
         $this->db->where('created_at >=', $start_date);
         $this->db->where('created_at <=', $end_date);
+        $this->db->where('transaction.status', 1);
         $this->db->like('customer_id', $customer_id);
         $query = $this->db->get();
         return $query->result();
@@ -107,6 +138,7 @@ class Report_model extends CI_Model
         $this->db->select_sum('price_buy');
         $this->db->where('created_at >=', $start_date);
         $this->db->where('created_at <=', $end_date);
+        $this->db->where('transaction.status', 1);
         $this->db->like('customer_id', $customer_id);
         $query = $this->db->get('transaction');
         if ($query->num_rows() > 0) {
@@ -121,6 +153,7 @@ class Report_model extends CI_Model
         $this->db->where('created_at >=', $start_date);
         $this->db->where('created_at <=', $end_date);
         $this->db->like('customer_id', $customer_id);
+        $this->db->where('transaction.status', 1);
         $query = $this->db->get('transaction');
         if ($query->num_rows() > 0) {
             return $query->row()->price_sell;
@@ -133,6 +166,7 @@ class Report_model extends CI_Model
         $this->db->select_sum('qty');
         $this->db->where('created_at >=', $start_date);
         $this->db->where('created_at <=', $end_date);
+        $this->db->where('transaction.status', 1);
         $this->db->like('customer_id', $customer_id);
         $query = $this->db->get('transaction');
         if ($query->num_rows() > 0) {
@@ -146,6 +180,7 @@ class Report_model extends CI_Model
         $this->db->select_sum('profit');
         $this->db->where('created_at >=', $start_date);
         $this->db->where('created_at <=', $end_date);
+        $this->db->where('transaction.status', 1);
         $this->db->like('customer_id', $customer_id);
         $query = $this->db->get('transaction');
 
@@ -154,5 +189,16 @@ class Report_model extends CI_Model
         } else {
             return 0;
         }
+    }
+
+    public function transaction_month()
+    {
+        $this->db->select('*');
+        $this->db->from('transaction');
+        $this->db->where('MONTH(created_at) = MONTH(NOW())');
+        $this->db->where('transaction.status', 1);
+        // $this->db->group_by('MONTH(created_at)');
+        $query = $this->db->get();
+        return $query->result();
     }
 }

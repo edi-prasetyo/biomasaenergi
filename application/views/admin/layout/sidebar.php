@@ -77,17 +77,29 @@ $meta = $this->meta_model->get_meta();
 
             <p class="text-muted font-weight-bold text-uppercase px-3 small py-2 mb-0"><b>Web Front</b></p>
             <li class="nav-item">
-                <a href="<?php echo base_url('admin/berita'); ?>" class="nav-link disabled <?php if ($this->uri->segment(2) == "berita") {
-                                                                                                echo 'active';
-                                                                                            } ?>">
+                <a href="<?php echo base_url('admin/homepage'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "homepage") {
+                                                                                        echo 'active';
+                                                                                    } ?>">
+                    <i class="feather-book mr-3  fa-fw"></i>
+                    Homepage
+                </a>
+                <a href="<?php echo base_url('admin/berita'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "berita") {
+                                                                                        echo 'active';
+                                                                                    } ?>">
                     <i class="feather-rss mr-3  fa-fw"></i>
                     Berita
                 </a>
-                <a href="<?php echo base_url('admin/category'); ?>" class="nav-link disabled <?php if ($this->uri->segment(2) == "category") {
-                                                                                                    echo 'active';
-                                                                                                } ?>">
+                <a href="<?php echo base_url('admin/category'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "category") {
+                                                                                        echo 'active';
+                                                                                    } ?>">
                     <i class="feather-tag mr-3  fa-fw"></i>
                     Kategori
+                </a>
+                <a href="<?php echo base_url('admin/page'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "page") {
+                                                                                    echo 'active';
+                                                                                } ?>">
+                    <i class="feather-file-text mr-3  fa-fw"></i>
+                    Page
                 </a>
             </li>
             <p class="text-muted font-weight-bold text-uppercase px-3 small py-2 mb-0"><b>Pengaturan</b></p>
@@ -110,11 +122,19 @@ $meta = $this->meta_model->get_meta();
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?php echo base_url('admin/pengaturan'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "meta") {
+                <a href="<?php echo base_url('admin/pengaturan'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "pengaturan") {
                                                                                             echo 'active';
                                                                                         } ?>">
                     <i class="feather-mail mr-3  fa-fw"></i>
                     Email Manajemen
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo base_url('admin/menu'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "menu") {
+                                                                                    echo 'active';
+                                                                                } ?>">
+                    <i class="feather-book-open mr-3  fa-fw"></i>
+                    Menu
                 </a>
             </li>
         </ul>

@@ -25,7 +25,7 @@
                 foreach ($layanan as $data) : ?>
                     <tr>
                         <td class="text-info"><?php echo $no; ?></td>
-                        <td><?php echo $data->layanan_name; ?></td>
+                        <td><?php echo $data->layanan_name_id; ?></td>
                         <td>
                             <div style="color:<?php echo $data->layanan_color; ?>"> <i class="ri-focus-fill"></i></div>
                         </td>

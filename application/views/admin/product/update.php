@@ -30,7 +30,7 @@ echo form_open_multipart('admin/product/update/' . $product->id, array('class' =
           </div>
 
           <div class="col-md-3">
-            <label>Nama Produk</label>
+            <label>Nama Produk (ID)</label>
           </div>
           <div class="col-md-9 my-2">
             <div class="form-group form-group-lg">
@@ -38,23 +38,51 @@ echo form_open_multipart('admin/product/update/' . $product->id, array('class' =
               <div class="invalid-feedback">Silahkan masukan nama Produk.</div>
             </div>
           </div>
+          <div class="col-md-3">
+            <label>Product Name (EN)</label>
+          </div>
+          <div class="col-md-9 my-2">
+            <div class="form-group form-group-lg">
+              <input type="text" name="product_name_en" class="form-control" placeholder="Product Name" value="<?php echo $product->product_name_en; ?>" required>
+              <div class="invalid-feedback">Silahkan masukan nama Produk.</div>
+            </div>
+          </div>
 
           <div class="col-md-3">
-            <label>Spesifikasi</label>
+            <label>Spesifikasi (ID)</label>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-9 my-2">
             <div class="form-group">
               <textarea name="spesification" class="form-control" placeholder="Spesifikasi Produk" required><?php echo $product->spesification; ?></textarea>
               <div class="invalid-feedback">Silahkan masukan Spesifikasi Produk.</div>
             </div>
           </div>
+          <div class="col-md-3">
+            <label>Spesification (EN)</label>
+          </div>
+          <div class="col-md-9 my-2">
+            <div class="form-group">
+              <textarea name="spesification_en" class="form-control" placeholder="Product Spesification" required><?php echo $product->spesification_en; ?></textarea>
+              <div class="invalid-feedback">Silahkan masukan Spesifikasi Produk.</div>
+            </div>
+          </div>
 
           <div class="col-md-3">
-            <label>Deskripsi</label>
+            <label>Deskripsi (ID)</label>
           </div>
           <div class="col-md-9 my-2">
             <div class="form-group">
               <textarea name="description" class="form-control" id="summernote" placeholder="Deskripsi Produk" required><?php echo $product->description; ?></textarea>
+              <div class="invalid-feedback">Silahkan masukan Deskripsi Produk.</div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label>Description (EN)</label>
+          </div>
+          <div class="col-md-9 my-2">
+            <div class="form-group">
+              <textarea name="description_en" class="form-control" id="summernote2" placeholder="Product Description" required><?php echo $product->description_en; ?></textarea>
               <div class="invalid-feedback">Silahkan masukan Deskripsi Produk.</div>
             </div>
           </div>
