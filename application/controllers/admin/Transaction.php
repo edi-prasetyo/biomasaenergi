@@ -13,6 +13,7 @@ class Transaction extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('pdf');
         $this->load->model('transaction_model');
         $this->load->model('customer_model');
         $this->load->model('product_model');
@@ -325,26 +326,68 @@ class Transaction extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-danger">Data telah di Hapus</div>');
         redirect(base_url('admin/transaction'), 'refresh');
     }
-    function convertpdf()
+
+    function generate_to_pdf($id)
     {
+        error_reporting(0); // AGAR ERROR MASALAH VERSI PHP TIDAK MUNCUL
+        $transaction = $this->transaction_model->detail($id);
+        $pdf = new FPDF('L', 'mm', 'Letter');
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Cell(0, 7, 'DAFTAR PEGAWAI AYONGODING.COM', 0, 1, 'C');
+        $pdf->Cell(0, 7, 'DAFTAR PEGAWAI AYONGODING.COM', 0, 1, 'C');
+        $pdf->Cell(50, 6, 'Kanan', 0, 0, 'C');
+        $pdf->Cell(90, 6, 'Kiri', 0, 1, 'C');
+        $pdf->Cell(10, 7, '', 0, 1);
+        $pdf->SetFont('Arial', 'B', 10);
+        $pdf->Cell(10, 6, 'No', 1, 0, 'C');
+        $pdf->Cell(60, 6, 'Produk', 1, 0, 'C');
+        $pdf->Cell(100, 6, 'Spesifikasi', 1, 0, 'C');
+        $pdf->Cell(40, 6, 'Qty', 1, 0, 'C');
+        $pdf->Cell(40, 6, 'Harga', 1, 1, 'C');
+        $pdf->SetFont('Arial', '', 10);
 
+        $pdf->Cell(10, 6, $transaction->id, 1, 0, 'C');
+        $pdf->Cell(60, 6, $transaction->product_name, 1, 0, 'C');
+        $pdf->Cell(100, 6, $transaction->product_spesification, 1, 0, 'C');
+        $pdf->Cell(40, 6, $transaction->qty, 1, 0, 'C');
+        $pdf->Cell(40, 6, $transaction->price_sell, 1, 0, 'C');
+        // $no=0;
+        // foreach ($pegawai as $data){
+        //     $no++;
+        //     $pdf->Cell(10,6,$no,1,0, 'C');
+        //     $pdf->Cell(90,6,$data->nama,1,0);
+        //     $pdf->Cell(120,6,$data->alamat,1,0);
+        //     $pdf->Cell(40,6,$data->telp,1,1);
+        // }
+        $pdf->Output();
+    }
 
-        // Get output html
-        $html = $this->output->get_output();
+    function pdf($id)
+    {
+        $this->load->library('pdfgenerator');
+        $transaction = $this->transaction_model->detail($id);
+        // var_dump($transaction);
+        // die;
+        // title dari pdf
+        $data = [
+            'title_pdf'     => 'Laporan Penjualan Toko Kita',
+            'transaction'   => $transaction,
+            'content'       => 'admin/transaction/pdf'
+        ];
 
-        // Load pdf library
-        $this->load->library('pdf');
+        // $this->data['title_pdf'] = 'Laporan Penjualan Toko Kita';
 
-        // Load HTML content
-        $this->pdf->loadHtml($html);
+        // filename dari pdf ketika didownload
+        $file_pdf = 'laporan_penjualan_toko_kita';
+        // setting paper
+        $paper = 'A4';
+        //orientasi paper potrait / landscape
+        $orientation = "portrait";
 
-        // (Optional) Setup the paper size and orientation
-        $this->pdf->setPaper('A4', 'landscape');
+        $html = $this->load->view('admin/transaction/pdf', $data, true);
 
-        // Render the HTML as PDF
-        $this->pdf->render();
-
-        // Output the generated PDF (1 = download and 0 = preview)
-        $this->pdf->stream("welcome.pdf", array("Attachment" => 0));
+        // run dompdf
+        $this->pdfgenerator->generate($html, $file_pdf, $paper, $orientation);
     }
 }
