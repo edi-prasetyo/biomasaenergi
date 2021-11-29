@@ -201,4 +201,43 @@ class Report_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    public function pembelian_month()
+    {
+        $this->db->select_sum('price_buy');
+        $this->db->where('MONTH(created_at) = MONTH(NOW())');
+        $this->db->where('transaction.status', 1);
+        $query = $this->db->get('transaction');
+
+        if ($query->num_rows() > 0) {
+            return $query->row()->price_buy;
+        } else {
+            return 0;
+        }
+    }
+    public function penjualan_month()
+    {
+        $this->db->select_sum('price_sell');
+        $this->db->where('MONTH(created_at) = MONTH(NOW())');
+        $this->db->where('transaction.status', 1);
+        $query = $this->db->get('transaction');
+
+        if ($query->num_rows() > 0) {
+            return $query->row()->price_sell;
+        } else {
+            return 0;
+        }
+    }
+    public function profit_month()
+    {
+        $this->db->select_sum('profit');
+        $this->db->where('MONTH(created_at) = MONTH(NOW())');
+        $this->db->where('transaction.status', 1);
+        $query = $this->db->get('transaction');
+
+        if ($query->num_rows() > 0) {
+            return $query->row()->profit;
+        } else {
+            return 0;
+        }
+    }
 }

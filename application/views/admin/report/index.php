@@ -4,8 +4,8 @@
             <div class="card-body d-flex w-100 justify-content-between">
                 <div class="col">
                     <h5 class="card-title text-white">Transaksi <?php echo
-                                                                date('F'); ?></h5>
-                    <span class="h3 font-weight-bold text-white"><?php echo count($transaction_month); ?></span>
+                                                                date('F Y'); ?></h5>
+                    <span class="h3 font-weight-bold text-white">Rp. <?php echo count($transaction_month); ?></span>
                 </div>
             </div>
         </div>
@@ -15,8 +15,8 @@
             <div class="card-body d-flex w-100 justify-content-between">
                 <div class="col">
                     <h5 class="card-title text-white">Pembelian <?php echo
-                                                                date('F'); ?></h5>
-                    <span class="h3 font-weight-bold text-white">100</span>
+                                                                date('F Y'); ?></h5>
+                    <span class="h3 font-weight-bold text-white">Rp. <?php echo number_format($pembelian_month, 0, ",", "."); ?></span>
                 </div>
             </div>
         </div>
@@ -26,8 +26,8 @@
             <div class="card-body d-flex w-100 justify-content-between">
                 <div class="col">
                     <h5 class="card-title text-white">Penjualan <?php echo
-                                                                date('F'); ?></h5>
-                    <span class="h3 font-weight-bold text-white">100</span>
+                                                                date('F Y'); ?></h5>
+                    <span class="h3 font-weight-bold text-white">Rp. <?php echo number_format($penjualan_month, 0, ",", "."); ?></span>
                 </div>
             </div>
         </div>
@@ -37,8 +37,8 @@
             <div class="card-body d-flex w-100 justify-content-between">
                 <div class="col">
                     <h5 class="card-title text-white">Profit <?php echo
-                                                                date('F'); ?></h5>
-                    <span class="h3 font-weight-bold text-white">100</span>
+                                                                date('F Y'); ?></h5>
+                    <span class="h3 font-weight-bold text-white">Rp. <?php echo number_format($profit_month, 0, ",", "."); ?></span>
                 </div>
             </div>
         </div>

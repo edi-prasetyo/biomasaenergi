@@ -47,7 +47,7 @@ $meta = $this->meta_model->get_meta();
     <div class="card">
         <div class="card-header bg-white">
             <a href="javascript:;" onclick="window.print()" class="btn btn-outline-secondary"><i class="feather-printer"></i> Print</a>
-            <a href="<?php echo base_url('admin/transaction/pdf/' . $transaction->id); ?>" class="btn btn-success">Save Pdf</a>
+            <!-- <a href="<?php echo base_url('admin/transaction/pdf/' . $transaction->id); ?>" class="btn btn-success">Save Pdf</a> -->
         </div>
         <div id="section-to-print">
             <div id="source-html">

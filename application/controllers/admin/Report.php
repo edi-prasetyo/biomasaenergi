@@ -65,9 +65,9 @@ class Report extends CI_Controller
         $customer               = $this->customer_model->get_customer();
 
         $transaction_month      = $this->report_model->transaction_month();
-        // $pembelian_month        = $this->report_model->pembelian_month();
-        // $penjualan_month        = $this->report_model->penjualan_month();
-        // $profit_month           = $this->report_model->profit_month();
+        $pembelian_month        = $this->report_model->pembelian_month();
+        $penjualan_month        = $this->report_model->penjualan_month();
+        $profit_month           = $this->report_model->profit_month();
         // var_dump(count($transaction_month));
         // die;
 
@@ -80,6 +80,9 @@ class Report extends CI_Controller
             'total_profit'              => $total_profit,
             'customer'                  => $customer,
             'transaction_month'         => $transaction_month,
+            'pembelian_month'           => $pembelian_month,
+            'penjualan_month'           => $penjualan_month,
+            'profit_month'              => $profit_month,
             'pagination'                => $this->pagination->create_links(),
             'content'                   => 'admin/report/index'
         ];
