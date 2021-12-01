@@ -55,8 +55,24 @@ $meta = $this->meta_model->get_meta();
                     <div class="row">
                         <div class="col-6">
                             <img width="90%" src="<?php echo base_url('assets/img/logo/' . $meta->logo); ?>" class="img-fluid">
-                            <h4 class="mt-3 fw-bold"><?php echo $meta->title; ?></h4>
+
                         </div>
+
+
+                        <hr class="mt-3">
+
+
+                        <div class="col-6 text-start">
+                            <small>Tagihan kepada</small>
+                            <address class="m-t-5 m-b-5">
+                                <strong class="text-inverse"><?php echo $transaction->company; ?></strong><br>
+                                <?php echo $transaction->address; ?><br>
+                                <?php echo $transaction->city_name; ?>, <?php echo $transaction->province_name; ?>, <?php echo $transaction->postal_code; ?><br>
+                                Phone: <?php echo $transaction->phone; ?><br>
+                                Whatsapp: <?php echo $transaction->whatsapp; ?>
+                            </address>
+                        </div>
+
                         <div class="col-6 text-end">
                             <h1 class="mt-3 fw-bold">INVOICE</h1>
                             No. Invoice: <?php echo $transaction->invoice_number; ?><br>
@@ -69,29 +85,6 @@ $meta = $this->meta_model->get_meta();
                             <?php endif; ?>
                         </div>
 
-                        <hr class="mt-3">
-
-                        <div class="col-6">
-                            <small>Informasi Perusahaan</small>
-                            <address class="m-t-5 m-b-5">
-                                <strong class="text-inverse"><?php echo $meta->title; ?></strong><br>
-                                <?php echo $meta->alamat; ?><br>
-                                City, Zip Code<br>
-                                Phone: <?php echo $meta->telepon; ?><br>
-                                Whatsapp: <?php echo $meta->whatsapp; ?>
-                            </address>
-                        </div>
-                        <div class="col-6 text-end">
-                            <small>Tagihan kepada</small>
-                            <address class="m-t-5 m-b-5">
-                                <strong class="text-inverse"><?php echo $transaction->company; ?></strong><br>
-                                <?php echo $transaction->address; ?><br>
-                                <?php echo $transaction->city_name; ?>, <?php echo $transaction->province_name; ?>, <?php echo $transaction->postal_code; ?><br>
-                                Phone: <?php echo $transaction->phone; ?><br>
-                                Whatsapp: <?php echo $transaction->whatsapp; ?>
-                            </address>
-                        </div>
-
                     </div>
                     <!-- end invoice-header -->
                     <!-- begin invoice-content -->
@@ -101,7 +94,7 @@ $meta = $this->meta_model->get_meta();
                             <table class="product_table table-bordered border-dark" border="1">
                                 <thead>
                                     <tr>
-                                        <th scope="col" width="5%">No</th>
+
                                         <th scope="col">Produk</th>
                                         <th scope="col">Spesifikasi</th>
                                         <th scope="col">Qty</th>
@@ -110,15 +103,15 @@ $meta = $this->meta_model->get_meta();
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th>1</th>
+
                                         <td><?php echo $transaction->product_name; ?></td>
                                         <td><?php echo $transaction->product_spesification; ?></td>
                                         <td><?php echo number_format($transaction->qty, 0, ",", "."); ?> KG</td>
-                                        <td>Rp. <?php echo number_format($transaction->price_sell, 0, ",", "."); ?></td>
+                                        <td>Rp. <?php echo number_format($transaction->price_sell, 0, ",", "."); ?> /kg</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="4" class="text-end fw-bold">Grand Total</td>
-                                        <td>Rp. <?php echo number_format($transaction->price_sell, 0, ",", "."); ?></td>
+                                        <td colspan="3" class="text-end fw-bold">Grand Total</td>
+                                        <td colspan="2">Rp. <?php echo number_format($transaction->total_price_sell, 0, ",", "."); ?></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -148,6 +141,7 @@ $meta = $this->meta_model->get_meta();
                     <!-- end invoice-footer -->
                 </div>
                 <div class="card-footer bg-white">
+                    <p class="text-center"><?php echo $meta->alamat; ?></p>
                     <p class="text-center">
                         <span class="m-r-10"><i class="feather-link-2"></i> <?php echo $meta->link; ?></span>
                         <span class="ms-5"><i class="feather-phone"></i> <?php echo $meta->telepon; ?></span>

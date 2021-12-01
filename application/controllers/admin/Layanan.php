@@ -16,12 +16,6 @@ class Layanan extends CI_Controller
         parent::__construct();
         $this->load->library('pagination');
         $this->load->model('layanan_model');
-
-        $id = $this->session->userdata('id');
-        $user = $this->user_model->user_detail($id);
-        if ($user->role_id == 2) {
-            redirect('admin/dashboard');
-        }
     }
 
     public function index()

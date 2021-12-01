@@ -61,8 +61,8 @@ $meta = $this->meta_model->get_meta();
             <div class="card-body">
                 <div class="row">
                     <div class="col-6">
-                        <img width="90%" src="<?php echo base_url('assets/img/logo/' . $meta->logo); ?>" class="img-fluid">
-                        <h4 class="mt-3 fw-bold"><?php echo $meta->title; ?></h4>
+                        <img width="80%" src="<?php echo base_url('assets/img/logo/' . $meta->logo); ?>" class="img-fluid"><br>
+
                         <p><?php echo $meta->alamat; ?></p>
                     </div>
                     <div class="col-6 text-end">
@@ -103,7 +103,7 @@ $meta = $this->meta_model->get_meta();
                         <table class="product_table table-bordered border-dark">
                             <thead>
                                 <tr>
-                                    <th width="2%" style="font-size: 15px;" scope="col">No</th>
+
                                     <th width="20%" style="font-size: 15px;" scope="col">Nama Barang</th>
                                     <th width="38%" style="font-size: 15px;" scope="col">Spesifikasi</th>
                                     <th width="20%" style="font-size: 15px;" scope="col">Unit</th>
@@ -112,14 +112,14 @@ $meta = $this->meta_model->get_meta();
                             </thead>
                             <tbody>
                                 <tr>
-                                    <th>1</th>
+
                                     <td><?php echo $transaction->product_name; ?></td>
                                     <td><?php echo $transaction->product_spesification; ?></td>
                                     <td> Kg</td>
                                     <td><?php echo number_format($transaction->qty, 0, ",", "."); ?> Kg</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="4" class="text-end fw-bold">Grand Total</td>
+                                    <td colspan="3" class="text-end fw-bold">Grand Total</td>
                                     <td><?php echo number_format($transaction->qty, 0, ",", "."); ?> Kg</td>
                                 </tr>
                             </tbody>

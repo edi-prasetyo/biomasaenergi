@@ -40,7 +40,7 @@
                                             <?php echo $transaction->payment_status; ?>
                                         </small>
                                     <?php endif; ?>
-                                    <h2 class="fw-bold text-primary">Rp. <?php echo number_format($transaction->price_sell, 0, ",", "."); ?></h2>
+                                    <h2 class="fw-bold text-primary">Rp. <?php echo number_format($transaction->total_price_sell, 0, ",", "."); ?></h2>
                                     <?php if ($transaction->payment == "transfer") : ?>
                                     <?php else : ?>
                                         <p class="mb-3 text-muted text-primary-hover d-block">Jatuh Tempo <?php echo date("d/m/Y", strtotime($transaction->due_date)); ?></p>

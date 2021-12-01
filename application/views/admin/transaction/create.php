@@ -95,14 +95,14 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="example-text-input" class="col-form-label">Harga Beli <span class="text-danger">*</span></label>
+                        <label for="example-text-input" class="col-form-label">Harga Beli <span class="text-danger">* ( per Kg )</span></label>
                         <input class="form-control" type="text" name="price_buy" placeholder="Harga Beli" autocomplete="off" id="inputku" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);" required>
                         <div class="invalid-feedback">Harga Beli harus di isi.</div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="example-text-input" class="col-form-label">Harga Jual <span class="text-danger">*</span></label>
+                        <label for="example-text-input" class="col-form-label">Harga Jual <span class="text-danger">* ( per Kg )</span></label>
                         <input class="form-control" type="text" name="price_sell" placeholder="Harga Jual" autocomplete="off" id="inputku" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);" required>
                         <div class="invalid-feedback">Harga Jual harus di isi.</div>
                     </div>

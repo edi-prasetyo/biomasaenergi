@@ -13,7 +13,7 @@
                     <?php endif; ?>
                 </h1>
                 <p>
-                    <a href="#" class="btn btn-success btn-lg mt-5 mb-5 text-white">
+                    <a href="#product" class="btn btn-success btn-lg mt-5 mb-5 text-white">
                         <?php if ($this->session->userdata('language') == 'EN') : ?>
                             <?php echo $homepage->hero_button_en; ?> <i class="feather-arrow-right"></i>
                         <?php elseif ($this->session->userdata('language') == 'ID') : ?>
@@ -134,7 +134,7 @@
     </div>
 </section>
 
-<section class="pt-5 pb-5 my-5">
+<section class="pt-5 pb-5 my-5" id="product">
     <div class="container">
 
         <h2 class="display-5 mb-5">

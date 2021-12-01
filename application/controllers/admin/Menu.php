@@ -29,7 +29,7 @@ class Menu extends CI_Controller
   public function create()
   {
     $this->form_validation->set_rules(
-      'nama_menu_ind',
+      'menu_id',
       'Nama Menu Indonesia',
       'required',
       [
@@ -52,8 +52,8 @@ class Menu extends CI_Controller
       $this->load->view('admin/layout/wrapp', $data, FALSE);
     } else {
       $data = [
-        'nama_en'           => $this->input->post('nama_en'),
-        'nama_id'           => $this->input->post('nama_id'),
+        'name_en'           => $this->input->post('name_en'),
+        'name_id'           => $this->input->post('name_id'),
         'url'                     => $this->input->post('url'),
         'urutan'                  => $this->input->post('urutan'),
         'created_at'            => date('Y-m-d H:i:s')

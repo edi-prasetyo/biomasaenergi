@@ -101,6 +101,12 @@ $meta = $this->meta_model->get_meta();
                     <i class="feather-file-text mr-3  fa-fw"></i>
                     Page
                 </a>
+                <a href="<?php echo base_url('admin/layanan'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "layanan") {
+                                                                                        echo 'active';
+                                                                                    } ?>">
+                    <i class="feather-file-text mr-3  fa-fw"></i>
+                    Layanan
+                </a>
             </li>
             <p class="text-muted font-weight-bold text-uppercase px-3 small py-2 mb-0"><b>Pengaturan</b></p>
 

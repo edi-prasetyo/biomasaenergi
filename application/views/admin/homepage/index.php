@@ -262,14 +262,14 @@
                         <div class="form-group row mb-2">
                             <label class="col-md-4 text-end">Deskripsi ( ID ) </label>
                             <div class="col-md-8">
-                                <textarea class="form-control" name="product_desc_id" required><?php echo $homepage->product_desc_id; ?></textarea>
+                                <textarea class="form-control" name="product_desc_id" id="summernote" required><?php echo $homepage->product_desc_id; ?></textarea>
                                 <div class="invalid-feedback">Silahkan Masukan Text.</div>
                             </div>
                         </div>
                         <div class="form-group row mb-2">
                             <label class="col-md-4 text-end"> Description ( EN )</label>
                             <div class="col-md-8">
-                                <textarea class="form-control" name="product_desc_en" required><?php echo $homepage->product_desc_en; ?></textarea>
+                                <textarea class="form-control" name="product_desc_en" id="summernote2" required><?php echo $homepage->product_desc_en; ?></textarea>
                                 <div class="invalid-feedback">Silahkan Masukan Text.</div>
                             </div>
                         </div>
