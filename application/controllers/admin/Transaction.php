@@ -92,11 +92,23 @@ class Transaction extends CI_Controller
             $input_qty                  = $this->input->post('qty');
             $qty                        = preg_replace('/\D/', '', $input_qty);
 
-            $total_price_buy        = (int)$qty * (int)$price_buy;
-            $total_price_sell       = (int)$qty * (int)$price_sell;
+            $input_shipping             = $this->input->post('shipping');
+            $shipping                   = preg_replace('/\D/', '', $input_shipping);
+
+            $input_job_services         = $this->input->post('job_services');
+            $job_services               = preg_replace('/\D/', '', $input_job_services);
+
+            $input_spare_parts         = $this->input->post('spare_parts');
+            $spare_parts               = preg_replace('/\D/', '', $input_spare_parts);
+
+            $total_price_buy           = (int)$qty * (int)$price_buy;
+            $total_price_sell          = (int)$qty * (int)$price_sell;
+
+            $grand_total               = (int)$qty * (int)$price_sell + (int)$shipping + (int)$job_services + (int)$spare_parts;
 
             $profit = (int)$price_sell - (int)$price_buy;
             $total_profit = (int)$total_price_sell - (int)$total_price_buy;
+
             $data = [
                 'created_by'                => $this->session->userdata('id'),
                 'customer_id'               => $this->input->post('customer_id'),
@@ -120,6 +132,10 @@ class Transaction extends CI_Controller
                 'total_price_sell'          => $total_price_sell,
                 'profit'                    => $profit,
                 'total_profit'              => $total_profit,
+                'shipping'                  => $shipping,
+                'job_services'              => $job_services,
+                'spare_parts'               => $spare_parts,
+                'grand_total'               => $grand_total,
                 'payment'                   => $this->input->post('payment'),
                 'payment_status'            => 'Paid',
                 'created_at'                => date('Y-m-d H:i:s')

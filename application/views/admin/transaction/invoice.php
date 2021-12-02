@@ -99,6 +99,7 @@ $meta = $this->meta_model->get_meta();
                                         <th scope="col">Spesifikasi</th>
                                         <th scope="col">Qty</th>
                                         <th scope="col">Harga</th>
+                                        <th scope="col">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -108,10 +109,41 @@ $meta = $this->meta_model->get_meta();
                                         <td><?php echo $transaction->product_spesification; ?></td>
                                         <td><?php echo number_format($transaction->qty, 0, ",", "."); ?> KG</td>
                                         <td>Rp. <?php echo number_format($transaction->price_sell, 0, ",", "."); ?> /kg</td>
+                                        <td>Rp. <?php echo number_format($transaction->total_price_sell, 0, ",", "."); ?></td>
                                     </tr>
+                                    <?php if ($transaction->shipping == 0) : ?>
+                                    <?php else : ?>
+                                        <tr>
+                                            <td colspan="2">Biaya Kirim</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Rp. <?php echo number_format($transaction->shipping, 0, ",", "."); ?></td>
+                                        </tr>
+                                    <?php endif; ?>
+
+                                    <?php if ($transaction->job_services == 0) : ?>
+                                    <?php else : ?>
+                                        <tr>
+                                            <td colspan="2">Jasa Pekerjaan</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Rp. <?php echo number_format($transaction->job_services, 0, ",", "."); ?></td>
+                                        </tr>
+                                    <?php endif; ?>
+
+                                    <?php if ($transaction->job_services == 0) : ?>
+                                    <?php else : ?>
+                                        <tr>
+                                            <td colspan="2">Spare Parts</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>Rp. <?php echo number_format($transaction->spare_parts, 0, ",", "."); ?></td>
+                                        </tr>
+                                    <?php endif; ?>
+
                                     <tr>
-                                        <td colspan="3" class="text-end fw-bold">Grand Total</td>
-                                        <td colspan="2">Rp. <?php echo number_format($transaction->total_price_sell, 0, ",", "."); ?></td>
+                                        <td colspan="4" class="text-end fw-bold">Grand Total</td>
+                                        <td colspan="2">Rp. <?php echo number_format($transaction->grand_total, 0, ",", "."); ?></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -138,6 +170,9 @@ $meta = $this->meta_model->get_meta();
                         </p>
 
                     </div>
+
+                    <!-- <img style="position:absolute;bottom:0;width:100%;background-size: 100% 100%; background-repeat: no-repeat;background-position: center;  background-image: url();" src="<?php echo base_url('assets/img/galery/bg-footer-invoice.png'); ?>"> -->
+
                     <!-- end invoice-footer -->
                 </div>
                 <div class="card-footer bg-white">
@@ -147,6 +182,11 @@ $meta = $this->meta_model->get_meta();
                         <span class="ms-5"><i class="feather-phone"></i> <?php echo $meta->telepon; ?></span>
                         <span class="ms-5"><i class="feather-mail"></i> <?php echo $meta->email; ?></span>
                     </p>
+
+
+
+
+
                 </div>
             </div>
         </div>
