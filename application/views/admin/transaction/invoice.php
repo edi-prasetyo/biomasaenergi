@@ -43,7 +43,7 @@ $meta = $this->meta_model->get_meta();
         padding: 5px;
     }
 </style>
-<div class="col-md-8 mx-auto">
+<div class="col-md-11 mx-auto">
     <div class="card">
         <div class="card-header bg-white">
             <a href="javascript:;" onclick="window.print()" class="btn btn-outline-secondary"><i class="feather-printer"></i> Print</a>
