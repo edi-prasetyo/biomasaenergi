@@ -43,7 +43,7 @@ $meta = $this->meta_model->get_meta();
         padding: 5px;
     }
 </style>
-<div class="col-md-11 mx-auto">
+<div class="col-md-9 mx-auto">
     <div class="card">
         <div class="card-header bg-white">
             <a href="javascript:;" onclick="window.print()" class="btn btn-outline-secondary"><i class="feather-printer"></i> Print</a>
@@ -96,7 +96,7 @@ $meta = $this->meta_model->get_meta();
                                     <tr>
 
                                         <th scope="col">Produk</th>
-                                        <th scope="col">Spesifikasi</th>
+                                        <th width="40%" scope="col">Spesifikasi</th>
                                         <th scope="col">Qty</th>
                                         <th scope="col">Harga</th>
                                         <th scope="col">Total</th>
