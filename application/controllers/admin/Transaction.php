@@ -92,19 +92,19 @@ class Transaction extends CI_Controller
             $input_qty                  = $this->input->post('qty');
             $qty                        = preg_replace('/\D/', '', $input_qty);
 
-            $input_shipping             = $this->input->post('shipping');
-            $shipping                   = preg_replace('/\D/', '', $input_shipping);
+            $input_value_1             = $this->input->post('input_value_1');
+            $value_1                   = preg_replace('/\D/', '', $input_value_1);
 
-            $input_job_services         = $this->input->post('job_services');
-            $job_services               = preg_replace('/\D/', '', $input_job_services);
+            $input_value_2         = $this->input->post('input_value_2');
+            $value_2               = preg_replace('/\D/', '', $input_value_2);
 
-            $input_spare_parts         = $this->input->post('spare_parts');
-            $spare_parts               = preg_replace('/\D/', '', $input_spare_parts);
+            $input_value_3         = $this->input->post('input_value_3');
+            $value_3               = preg_replace('/\D/', '', $input_value_3);
 
             $total_price_buy           = (int)$qty * (int)$price_buy;
             $total_price_sell          = (int)$qty * (int)$price_sell;
 
-            $grand_total               = (int)$qty * (int)$price_sell + (int)$shipping + (int)$job_services + (int)$spare_parts;
+            $grand_total               = (int)$qty * (int)$price_sell + (int)$value_1 + (int)$value_2 + (int)$value_3;
 
             $profit = (int)$price_sell - (int)$price_buy;
             $total_profit = (int)$total_price_sell - (int)$total_price_buy;
@@ -132,9 +132,12 @@ class Transaction extends CI_Controller
                 'total_price_sell'          => $total_price_sell,
                 'profit'                    => $profit,
                 'total_profit'              => $total_profit,
-                'shipping'                  => $shipping,
-                'job_services'              => $job_services,
-                'spare_parts'               => $spare_parts,
+                'field_1'                   => $this->input->post('field_1'),
+                'field_2'                   => $this->input->post('field_2'),
+                'field_3'                   => $this->input->post('field_3'),
+                'value_1'                   => $value_1,
+                'value_2'                   => $value_2,
+                'value_3'                   => $value_3,
                 'grand_total'               => $grand_total,
                 'payment'                   => $this->input->post('payment'),
                 'payment_status'            => 'Paid',

@@ -51,7 +51,7 @@ $meta = $this->meta_model->get_meta();
         </div>
         <div id="section-to-print">
             <div id="source-html">
-                <div class="card-body">
+                <div class="card-body mb-5" style="height: 900px;">
                     <div class="row">
                         <div class="col-6">
                             <img width="90%" src="<?php echo base_url('assets/img/logo/' . $meta->logo); ?>" class="img-fluid">
@@ -111,33 +111,33 @@ $meta = $this->meta_model->get_meta();
                                         <td>Rp. <?php echo number_format($transaction->price_sell, 0, ",", "."); ?> /kg</td>
                                         <td>Rp. <?php echo number_format($transaction->total_price_sell, 0, ",", "."); ?></td>
                                     </tr>
-                                    <?php if ($transaction->shipping == 0) : ?>
+                                    <?php if ($transaction->value_1 == 0) : ?>
                                     <?php else : ?>
                                         <tr>
-                                            <td colspan="2">Biaya Kirim</td>
+                                            <td colspan="2"><?php echo $transaction->field_1; ?></td>
                                             <td></td>
                                             <td></td>
-                                            <td>Rp. <?php echo number_format($transaction->shipping, 0, ",", "."); ?></td>
+                                            <td>Rp. <?php echo number_format($transaction->value_1, 0, ",", "."); ?></td>
                                         </tr>
                                     <?php endif; ?>
 
-                                    <?php if ($transaction->job_services == 0) : ?>
+                                    <?php if ($transaction->value_2 == 0) : ?>
                                     <?php else : ?>
                                         <tr>
-                                            <td colspan="2">Jasa Pekerjaan</td>
+                                            <td colspan="2"><?php echo $transaction->field_2; ?></td>
                                             <td></td>
                                             <td></td>
-                                            <td>Rp. <?php echo number_format($transaction->job_services, 0, ",", "."); ?></td>
+                                            <td>Rp. <?php echo number_format($transaction->value_2, 0, ",", "."); ?></td>
                                         </tr>
                                     <?php endif; ?>
 
-                                    <?php if ($transaction->job_services == 0) : ?>
+                                    <?php if ($transaction->value_3 == 0) : ?>
                                     <?php else : ?>
                                         <tr>
-                                            <td colspan="2">Spare Parts</td>
+                                            <td colspan="2"><?php echo $transaction->field_3; ?></td>
                                             <td></td>
                                             <td></td>
-                                            <td>Rp. <?php echo number_format($transaction->spare_parts, 0, ",", "."); ?></td>
+                                            <td>Rp. <?php echo number_format($transaction->value_3, 0, ",", "."); ?></td>
                                         </tr>
                                     <?php endif; ?>
 
@@ -151,15 +151,8 @@ $meta = $this->meta_model->get_meta();
 
                     </div>
 
-                    <!-- begin invoice-note -->
-                    <!-- <div class="invoice-note">
-                    * Make all cheques payable to [Your Company Name]<br>
-                    * Payment is due within 30 days<br>
-                    * If you have any questions concerning this invoice, contact [Name, Phone Number, Email]
-                </div> -->
-                    <!-- end invoice-note -->
-                    <!-- begin invoice-footer -->
-                    <div class="invoice-footer">
+
+                    <div class="invoice-footer pb-5">
                         <p class="text-end mb-5 f-w-600">
                             Hormat Kami
                         </p>
@@ -170,24 +163,19 @@ $meta = $this->meta_model->get_meta();
                         </p>
 
                     </div>
-
-                    <!-- <img style="position:absolute;bottom:0;width:100%;background-size: 100% 100%; background-repeat: no-repeat;background-position: center;  background-image: url();" src="<?php echo base_url('assets/img/galery/bg-footer-invoice.png'); ?>"> -->
+                    <div class="text pt-5" style="z-index:9999;position:absolute;bottom:0;font-size:12px;">
+                        <p class="text-center"><?php echo $meta->alamat; ?></p>
+                        <p class="text-center">
+                            <span class="m-r-10"><i class="feather-link-2"></i> <?php echo $meta->link; ?></span>
+                            <span class="ms-5"><i class="feather-phone"></i> <?php echo $meta->telepon; ?></span>
+                            <span class="ms-5"><i class="feather-mail"></i> <?php echo $meta->email; ?></span>
+                        </p>
+                    </div>
+                    <img style="position:absolute;bottom:0;left:0;width:100%;background-size: 100% 100%; background-repeat: no-repeat;background-position: center;  background-image: url();" src="<?php echo base_url('assets/img/galery/bg-footer-invoice.png'); ?>">
 
                     <!-- end invoice-footer -->
                 </div>
-                <div class="card-footer bg-white">
-                    <p class="text-center"><?php echo $meta->alamat; ?></p>
-                    <p class="text-center">
-                        <span class="m-r-10"><i class="feather-link-2"></i> <?php echo $meta->link; ?></span>
-                        <span class="ms-5"><i class="feather-phone"></i> <?php echo $meta->telepon; ?></span>
-                        <span class="ms-5"><i class="feather-mail"></i> <?php echo $meta->email; ?></span>
-                    </p>
 
-
-
-
-
-                </div>
             </div>
         </div>
     </div>

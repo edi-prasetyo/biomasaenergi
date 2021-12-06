@@ -119,31 +119,25 @@
         <div class="card-body">
             <div class="row">
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="example-text-input" class="col-form-label">Ongkos Kirim <span class="text-success">( Opsional )</span></label>
-                        <input class="form-control" type="text" name="shipping" placeholder="Ongkos kirim" autocomplete="off" id="inputku" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);">
-                        <div class="invalid-feedback">Harga Jual harus di isi.</div>
-                    </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text">Additional 1</span>
+                    <input type="text" name="field_1" class="form-control" placeholder="input 1">
+                    <input type="text" name="input_value_1" class="form-control" placeholder="value 1" autocomplete="off" id="inputku" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);">
+                </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text">Additional 2</span>
+                    <input type="text" name="field_2" class="form-control" placeholder="input 2">
+                    <input type="text" name="input_value_2" class="form-control" placeholder="value 2" autocomplete="off" id="inputku" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);">
+                </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text">Additional 3</span>
+                    <input type="text" name="field_3" class="form-control" placeholder="input 3">
+                    <input type="text" name="input_value_3" class="form-control" placeholder="value 3" autocomplete="off" id="inputku" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);">
                 </div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="example-text-input" class="col-form-label">Jasa Pekerjaan <span class="text-success">( Opsional )</span></label>
-                        <input class="form-control" type="text" name="job_services" placeholder="Jasa Pekerjaan" autocomplete="off" id="inputku" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);">
-                        <div class="invalid-feedback">Harga Jual harus di isi.</div>
-                    </div>
-                </div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="example-text-input" class="col-form-label">Ongkos Kirim <span class="text-success">( Opsional )</span></label>
-                        <input class="form-control" type="text" name="spare_parts" placeholder="Spare Part" autocomplete="off" id="inputku" onkeydown="return numbersonly(this, event);" onkeyup="javascript:tandaPemisahTitik(this);">
-                        <div class="invalid-feedback">Harga Jual harus di isi.</div>
-                    </div>
-                </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label for="example-text-input" class="col-form-label">Pembayaran <span class="text-danger">*</span></label>
                         <select class="form-select" name="payment" aria-label="Default select example" required>
