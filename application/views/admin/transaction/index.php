@@ -18,6 +18,7 @@
                     <th width="3%">No</th>
                     <th>tanggal</th>
                     <th>Customer</th>
+                    <th>Product</th>
                     <th>Qty</th>
                     <th>Harga Beli</th>
                     <th>Harga Jual</th>
@@ -32,7 +33,14 @@
                     <td><?php echo $no; ?></td>
                     <td><?php echo date("d/m/Y", strtotime($data->created_at)); ?></td>
                     <td><?php echo $data->company; ?></td>
-                    <td><?php echo number_format($data->qty, 0, ",", "."); ?> Kg</td>
+                    <td><?php echo $data->product_name; ?></td>
+                    <td>
+                        <?php if ($data->product_id == 2) : ?>
+                            <?php echo number_format($data->qty, 0, ",", "."); ?> Unit
+                        <?php else : ?>
+                            <?php echo number_format($data->qty, 0, ",", "."); ?> Kg
+                        <?php endif; ?>
+                    </td>
                     <td>Rp <?php echo number_format($data->price_buy, 0, ",", "."); ?></td>
                     <td>Rp <?php echo number_format($data->price_sell, 0, ",", "."); ?></td>
                     <td>Rp <?php echo number_format($data->profit, 0, ",", "."); ?></td>

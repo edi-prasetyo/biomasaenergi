@@ -103,10 +103,8 @@ $meta = $this->meta_model->get_meta();
                         <table class="product_table table-bordered border-dark">
                             <thead>
                                 <tr>
-
                                     <th width="20%" style="font-size: 15px;" scope="col">Nama Barang</th>
                                     <th width="38%" style="font-size: 15px;" scope="col">Spesifikasi</th>
-                                    <th width="20%" style="font-size: 15px;" scope="col">Unit</th>
                                     <th width="20%" style="font-size: 15px;" scope="col">Jumlah</th>
                                 </tr>
                             </thead>
@@ -115,12 +113,23 @@ $meta = $this->meta_model->get_meta();
 
                                     <td><?php echo $transaction->product_name; ?></td>
                                     <td><?php echo $transaction->product_spesification; ?></td>
-                                    <td> Kg</td>
-                                    <td><?php echo number_format($transaction->qty, 0, ",", "."); ?> Kg</td>
+                                    <td>
+                                        <?php if ($transaction->product_id == 1) : ?>
+                                            <?php echo number_format($transaction->qty, 0, ",", "."); ?> Kg
+                                        <?php else : ?>
+                                            <?php echo number_format($transaction->qty, 0, ",", "."); ?> Unit
+                                        <?php endif; ?>
+                                    </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3" class="text-end fw-bold">Grand Total</td>
-                                    <td><?php echo number_format($transaction->qty, 0, ",", "."); ?> Kg</td>
+                                    <td colspan="2" class="text-end fw-bold"> Total</td>
+                                    <td>
+                                        <?php if ($transaction->product_id == 1) : ?>
+                                            <?php echo number_format($transaction->qty, 0, ",", "."); ?> Kg
+                                        <?php else : ?>
+                                            <?php echo number_format($transaction->qty, 0, ",", "."); ?> Unit
+                                        <?php endif; ?>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

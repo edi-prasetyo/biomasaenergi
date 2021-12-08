@@ -122,6 +122,8 @@ class Galery extends CI_Controller
     $this->load->view('admin/layout/wrapp', $data, FALSE);
   }
 
+
+
   public function Update($id)
   {
     $galery = $this->galery_model->galery_detail($id);
@@ -205,6 +207,40 @@ class Galery extends CI_Controller
       'content'                             => 'admin/galery/update'
     ];
     $this->load->view('admin/layout/wrapp', $data, FALSE);
+  }
+
+  public function create_video()
+  {
+    $this->form_validation->set_rules(
+      'galery_title',
+      'Judul Galery',
+      'required',
+      array(
+        'required'                        => '%s Harus Diisi',
+      )
+    );
+    if ($this->form_validation->run() === FALSE) {
+      $data = [
+        'title'                           => 'Galeri Video',
+        'content'                         => 'admin/galery/create'
+      ];
+      $this->load->view('admin/layout/wrapp', $data, FALSE);
+    } else {
+      $slugcode = random_string('numeric', 5);
+      $galery_slug  = url_title($this->input->post('galery_title'), 'dash', TRUE);
+      $data  = [
+        'user_id'                             => $this->session->userdata('id'),
+        'galery_slug'                         => $slugcode . '-' . $galery_slug,
+        'galery_title'                        => $this->input->post('galery_title'),
+        'galery_desc'                         => $this->input->post('galery_desc'),
+        'galery_embed'                        => $this->input->post('galery_embed'),
+        'galery_type'                         => $this->input->post('galery_type'),
+        'date_created'                        => time()
+      ];
+      $this->galery_model->create($data);
+      $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah ditambahkan</div>');
+      redirect(base_url('admin/galery'), 'refresh');
+    }
   }
 
   public function delete($id)

@@ -88,11 +88,11 @@ class Report_model extends CI_Model
     // Total Pembelian
     public function total_pembelian()
     {
-        $this->db->select_sum('price_buy');
+        $this->db->select_sum('total_price_buy');
         $query = $this->db->get('transaction');
         $this->db->where('transaction.status', 1);
         if ($query->num_rows() > 0) {
-            return $query->row()->price_buy;
+            return $query->row()->total_price_buy;
         } else {
             return 0;
         }
@@ -100,11 +100,11 @@ class Report_model extends CI_Model
     // Total penjualan
     public function total_penjualan()
     {
-        $this->db->select_sum('price_sell');
+        $this->db->select_sum('total_price_sell');
         $query = $this->db->get('transaction');
         $this->db->where('transaction.status', 1);
         if ($query->num_rows() > 0) {
-            return $query->row()->price_sell;
+            return $query->row()->total_price_sell;
         } else {
             return 0;
         }
@@ -112,11 +112,11 @@ class Report_model extends CI_Model
     // Total Profit
     public function total_profit()
     {
-        $this->db->select_sum('profit');
+        $this->db->select_sum('total_profit');
         $this->db->where('transaction.status', 1);
         $query = $this->db->get('transaction');
         if ($query->num_rows() > 0) {
-            return $query->row()->profit;
+            return $query->row()->total_profit;
         } else {
             return 0;
         }
@@ -135,28 +135,28 @@ class Report_model extends CI_Model
     }
     public function total_pricebuy_date($start_date, $end_date, $customer_id)
     {
-        $this->db->select_sum('price_buy');
+        $this->db->select_sum('total_price_buy');
         $this->db->where('created_at >=', $start_date);
         $this->db->where('created_at <=', $end_date);
         $this->db->where('transaction.status', 1);
         $this->db->like('customer_id', $customer_id);
         $query = $this->db->get('transaction');
         if ($query->num_rows() > 0) {
-            return $query->row()->price_buy;
+            return $query->row()->total_price_buy;
         } else {
             return 0;
         }
     }
     public function total_pricesell_date($start_date, $end_date, $customer_id)
     {
-        $this->db->select_sum('price_sell');
+        $this->db->select_sum('total_price_sell');
         $this->db->where('created_at >=', $start_date);
         $this->db->where('created_at <=', $end_date);
         $this->db->like('customer_id', $customer_id);
         $this->db->where('transaction.status', 1);
         $query = $this->db->get('transaction');
         if ($query->num_rows() > 0) {
-            return $query->row()->price_sell;
+            return $query->row()->total_price_sell;
         } else {
             return 0;
         }
@@ -177,7 +177,7 @@ class Report_model extends CI_Model
     }
     public function total_profit_date($start_date, $end_date, $customer_id)
     {
-        $this->db->select_sum('profit');
+        $this->db->select_sum('total_profit');
         $this->db->where('created_at >=', $start_date);
         $this->db->where('created_at <=', $end_date);
         $this->db->where('transaction.status', 1);
@@ -185,7 +185,7 @@ class Report_model extends CI_Model
         $query = $this->db->get('transaction');
 
         if ($query->num_rows() > 0) {
-            return $query->row()->profit;
+            return $query->row()->total_profit;
         } else {
             return 0;
         }
@@ -203,39 +203,39 @@ class Report_model extends CI_Model
     }
     public function pembelian_month()
     {
-        $this->db->select_sum('price_buy');
+        $this->db->select_sum('total_price_buy');
         $this->db->where('MONTH(created_at) = MONTH(NOW())');
         $this->db->where('transaction.status', 1);
         $query = $this->db->get('transaction');
 
         if ($query->num_rows() > 0) {
-            return $query->row()->price_buy;
+            return $query->row()->total_price_buy;
         } else {
             return 0;
         }
     }
     public function penjualan_month()
     {
-        $this->db->select_sum('price_sell');
+        $this->db->select_sum('total_price_sell');
         $this->db->where('MONTH(created_at) = MONTH(NOW())');
         $this->db->where('transaction.status', 1);
         $query = $this->db->get('transaction');
 
         if ($query->num_rows() > 0) {
-            return $query->row()->price_sell;
+            return $query->row()->total_price_sell;
         } else {
             return 0;
         }
     }
     public function profit_month()
     {
-        $this->db->select_sum('profit');
+        $this->db->select_sum('total_profit');
         $this->db->where('MONTH(created_at) = MONTH(NOW())');
         $this->db->where('transaction.status', 1);
         $query = $this->db->get('transaction');
 
         if ($query->num_rows() > 0) {
-            return $query->row()->profit;
+            return $query->row()->total_profit;
         } else {
             return 0;
         }

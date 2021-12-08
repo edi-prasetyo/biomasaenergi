@@ -106,10 +106,10 @@
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo date("d/m/Y", strtotime($data->created_at)); ?></td>
                                 <td><?php echo $data->company; ?></td>
-                                <td><?php echo number_format($data->qty, 0, ",", "."); ?> Kg</td>
-                                <td>Rp <?php echo number_format($data->price_buy, 0, ",", "."); ?></td>
-                                <td>Rp <?php echo number_format($data->price_sell, 0, ",", "."); ?></td>
-                                <td>Rp <?php echo number_format($data->profit, 0, ",", "."); ?></td>
+                                <td><?php echo number_format($data->qty, 0, ",", "."); ?> </td>
+                                <td>Rp <?php echo number_format($data->total_price_buy, 0, ",", "."); ?></td>
+                                <td>Rp <?php echo number_format($data->total_price_sell, 0, ",", "."); ?></td>
+                                <td>Rp <?php echo number_format($data->total_profit, 0, ",", "."); ?></td>
                                 <td>
                                     <?php if ($data->payment_status == 'Paid') : ?>
                                         <div class="badge rounded-pill bg-success bg-opacity-50">Paid</div>
@@ -122,7 +122,7 @@
                         }; ?>
                         <tr>
                             <th colspan="3" scope="row" class="text-end">Jumlah</th>
-                            <td class="fw-bold"><?php echo number_format($total_unit, 0, ",", "."); ?> Kg</td>
+                            <td class="fw-bold"><?php echo number_format($total_unit, 0, ",", "."); ?> </td>
                             <td class="fw-bold">Rp. <?php echo number_format($total_pembelian, 0, ",", "."); ?></td>
                             <td class="fw-bold">Rp. <?php echo number_format($total_penjualan, 0, ",", "."); ?></td>
                             <td class="fw-bold">Rp. <?php echo number_format($total_profit, 0, ",", "."); ?></td>

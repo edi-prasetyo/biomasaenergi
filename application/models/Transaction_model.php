@@ -72,11 +72,11 @@ class Transaction_model extends CI_Model
     // Total Pembelian
     public function get_pembelian()
     {
-        $this->db->select_sum('price_buy');
+        $this->db->select_sum('total_price_buy');
         $query = $this->db->get('transaction');
         $this->db->where('transaction.status', 1);
         if ($query->num_rows() > 0) {
-            return $query->row()->price_buy;
+            return $query->row()->total_price_buy;
         } else {
             return 0;
         }
@@ -84,11 +84,11 @@ class Transaction_model extends CI_Model
     // Total penjualan
     public function get_penjualan()
     {
-        $this->db->select_sum('price_sell');
+        $this->db->select_sum('total_price_sell');
         $query = $this->db->get('transaction');
         $this->db->where('transaction.status', 1);
         if ($query->num_rows() > 0) {
-            return $query->row()->price_sell;
+            return $query->row()->total_price_sell;
         } else {
             return 0;
         }
@@ -96,12 +96,12 @@ class Transaction_model extends CI_Model
     // Total Profit
     public function get_profit()
     {
-        $this->db->select_sum('profit');
+        $this->db->select_sum('total_profit');
         $this->db->where('transaction.status', 1);
         $query = $this->db->get('transaction');
 
         if ($query->num_rows() > 0) {
-            return $query->row()->profit;
+            return $query->row()->total_profit;
         } else {
             return 0;
         }

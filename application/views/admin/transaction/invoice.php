@@ -107,8 +107,21 @@ $meta = $this->meta_model->get_meta();
 
                                         <td><?php echo $transaction->product_name; ?></td>
                                         <td><?php echo $transaction->product_spesification; ?></td>
-                                        <td><?php echo number_format($transaction->qty, 0, ",", "."); ?> KG</td>
-                                        <td>Rp. <?php echo number_format($transaction->price_sell, 0, ",", "."); ?> /kg</td>
+                                        <td>
+                                            <?php if ($transaction->product_id == 2) : ?>
+                                                <?php echo number_format($transaction->qty, 0, ",", "."); ?> Unit
+                                            <?php else : ?>
+                                                <?php echo number_format($transaction->qty, 0, ",", "."); ?> KG
+                                            <?php endif; ?>
+
+                                        </td>
+                                        <td>
+                                            <?php if ($transaction->product_id == 2) : ?>
+                                                Rp. <?php echo number_format($transaction->price_sell, 0, ",", "."); ?> /Unit
+                                            <?php else : ?>
+                                                Rp. <?php echo number_format($transaction->price_sell, 0, ",", "."); ?> /kg
+                                            <?php endif; ?>
+                                        </td>
                                         <td>Rp. <?php echo number_format($transaction->total_price_sell, 0, ",", "."); ?></td>
                                     </tr>
                                     <?php if ($transaction->value_1 == 0) : ?>
