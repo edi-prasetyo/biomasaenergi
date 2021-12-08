@@ -41,9 +41,9 @@
                             <?php echo number_format($data->qty, 0, ",", "."); ?> Kg
                         <?php endif; ?>
                     </td>
-                    <td>Rp <?php echo number_format($data->price_buy, 0, ",", "."); ?></td>
-                    <td>Rp <?php echo number_format($data->price_sell, 0, ",", "."); ?></td>
-                    <td>Rp <?php echo number_format($data->profit, 0, ",", "."); ?></td>
+                    <td>Rp <?php echo number_format($data->total_price_buy, 0, ",", "."); ?></td>
+                    <td>Rp <?php echo number_format($data->total_price_sell, 0, ",", "."); ?></td>
+                    <td>Rp <?php echo number_format($data->total_profit, 0, ",", "."); ?></td>
                     <td>
                         <?php if ($data->payment_status == 'Paid') : ?>
                             <div class="badge rounded-pill bg-success bg-opacity-50">Paid</div>
