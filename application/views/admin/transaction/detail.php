@@ -74,7 +74,7 @@
                             </div>
                             <div class="text-center text-md-start">
                                 <?php if ($transaction->payment_status == "Unpaid") : ?>
-                                    <a href="<?php echo base_url('admin/transaction/paid/' . md5($transaction->id)); ?>" class="btn btn-success text-white">Sudah Dibayar</a>
+                                    <a href="<?php echo base_url('admin/transaction/paid/' . $transaction->id); ?>" class="btn btn-success text-white">Sudah Dibayar</a>
                                 <?php else : ?>
                                 <?php endif; ?>
 

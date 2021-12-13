@@ -147,7 +147,7 @@ class Transaction_model extends CI_Model
     }
     public function update_paid($data)
     {
-        $this->db->where('md5(id)', $data['id']);
+        $this->db->where('id', $data['id']);
         $this->db->update('transaction', $data);
     }
     //Hapus Data Dari Database
