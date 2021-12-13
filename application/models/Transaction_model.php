@@ -23,7 +23,7 @@ class Transaction_model extends CI_Model
         $this->db->select('*');
         $this->db->from('transaction');
         $this->db->where('transaction.status', 1);
-        $this->db->order_by('id', 'DESC');
+        $this->db->order_by('created_at', 'DESC');
         $this->db->limit(3);
         $query = $this->db->get();
         return $query->result();
