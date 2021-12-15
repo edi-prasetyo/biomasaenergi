@@ -74,6 +74,14 @@ $meta = $this->meta_model->get_meta();
                     Data Kota
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="<?php echo base_url('admin/bank'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "bank") {
+                                                                                    echo 'active';
+                                                                                } ?>">
+                    <i class="feather-credit-card mr-3  fa-fw"></i>
+                    Data Bank
+                </a>
+            </li>
 
             <p class="text-muted font-weight-bold text-uppercase px-3 small py-2 mb-0"><b>Web Front</b></p>
             <li class="nav-item">
@@ -106,6 +114,18 @@ $meta = $this->meta_model->get_meta();
                                                                                     } ?>">
                     <i class="feather-file-text mr-3  fa-fw"></i>
                     Layanan
+                </a>
+                <a href="<?php echo base_url('admin/galery'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "galery") {
+                                                                                        echo 'active';
+                                                                                    } ?>">
+                    <i class="feather-camera mr-3  fa-fw"></i>
+                    Galery
+                </a>
+                <a href="<?php echo base_url('admin/video'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "video") {
+                                                                                        echo 'active';
+                                                                                    } ?>">
+                    <i class="feather-film mr-3  fa-fw"></i>
+                    Video
                 </a>
             </li>
             <p class="text-muted font-weight-bold text-uppercase px-3 small py-2 mb-0"><b>Pengaturan</b></p>

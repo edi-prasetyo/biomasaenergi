@@ -16,7 +16,6 @@
             <thead class="thead-light">
                 <tr>
                     <th>No</th>
-                    <th width="10%">Logo</th>
                     <th>Nama Bank</th>
                     <th>No. Rekening</th>
                     <th>Atas Nama</th>
@@ -28,7 +27,6 @@
             foreach ($bank as $data) { ?>
                 <tr>
                     <td><?php echo $no; ?></td>
-                    <td><img class="img-fluid" src="<?php echo base_url('assets/img/bank/' . $data->bank_logo); ?>"></td>
                     <td><?php echo $data->bank_name; ?></td>
                     <td><?php echo $data->bank_number; ?></td>
                     <td><?php echo $data->bank_account; ?></td>

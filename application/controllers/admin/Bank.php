@@ -83,54 +83,25 @@ class Bank extends CI_Controller
             ]
         );
 
-        if ($this->form_validation->run()) {
-            $config['upload_path']          = './assets/img/bank/';
-            $config['allowed_types']        = 'gif|jpg|png|jpeg|svg';
-            $config['max_size']             = 5000000;
-            $config['max_width']            = 5000000;
-            $config['max_height']           = 5000000;
-            $config['remove_spaces']        = TRUE;
-            $config['encrypt_name']         = TRUE;
-            $this->load->library('upload', $config);
-            $this->upload->initialize($config);
-            if (!$this->upload->do_upload('bank_logo')) {
-                $data = [
-                    'title'                 => 'Tambah Bank',
-                    'error_upload'          => $this->upload->display_errors(),
-                    'content'               => 'admin/bank/create'
-                ];
-                $this->load->view('admin/layout/wrapp', $data, FALSE);
-            } else {
-                $upload_data                = array('uploads'  => $this->upload->data());
-                $config['image_library']    = 'gd2';
-                $config['source_image']     = './assets/img/bank/' . $upload_data['uploads']['file_name'];
-                $config['create_thumb']     = TRUE;
-                $config['maintain_ratio']   = TRUE;
-                $config['width']            = 500;
-                $config['height']           = 500;
-                $config['thumb_marker']     = '';
-                $this->load->library('image_lib', $config);
-                $this->image_lib->resize();
-                $data  = [
-                    'user_id'               => $this->session->userdata('id'),
-                    'bank_name'             => $this->input->post('bank_name'),
-                    'bank_number'           => $this->input->post('bank_number'),
-                    'bank_account'          => $this->input->post('bank_account'),
-                    'bank_branch'           => $this->input->post('bank_branch'),
-                    'bank_logo'             => $upload_data['uploads']['file_name'],
-                    'date_created'          => time()
-                ];
-                $this->bank_model->create($data);
-                $this->session->set_flashdata('message', '<div class="alert alert-success">Data Bank telah ditambahkan</div>');
-                redirect(base_url('admin/bank'), 'refresh');
-            }
+        if ($this->form_validation->run() === FALSE) {
+            $data = [
+                'title'                 => 'Tambah Bank',
+                'content'               => 'admin/bank/create'
+            ];
+            $this->load->view('admin/layout/wrapp', $data, FALSE);
+        } else {
+            $data  = [
+                'user_id'               => $this->session->userdata('id'),
+                'bank_name'             => $this->input->post('bank_name'),
+                'bank_number'           => $this->input->post('bank_number'),
+                'bank_account'          => $this->input->post('bank_account'),
+                'bank_branch'           => $this->input->post('bank_branch'),
+                'date_created'          => time()
+            ];
+            $this->bank_model->create($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Data Bank telah ditambahkan</div>');
+            redirect(base_url('admin/bank'), 'refresh');
         }
-        $data = [
-            'title'             => 'Tambah Bank',
-            'error_upload'      => $this->upload->display_errors(),
-            'content'           => 'admin/bank/create'
-        ];
-        $this->load->view('admin/layout/wrapp', $data, FALSE);
     }
 
     public function Update($id)
@@ -144,80 +115,31 @@ class Bank extends CI_Controller
             ['required'      => '%s harus diisi']
         );
 
-        if ($valid->run()) {
-            if (!empty($_FILES['bank_logo']['name'])) {
+        if ($valid->run() === FALSE) {
 
-                $config['upload_path']          = './assets/img/bank/';
-                $config['allowed_types']        = 'gif|jpg|png|jpeg|svg';
-                $config['max_size']             = 5000000;
-                $config['max_width']            = 5000000;
-                $config['max_height']           = 5000000;
-                $config['remove_spaces']        = TRUE;
-                $config['encrypt_name']         = TRUE;
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-                if (!$this->upload->do_upload('bank_logo')) {
-                    $data = [
-                        'title'                 => 'Edit Bank',
-                        'bank'                  => $bank,
-                        'error_upload'          => $this->upload->display_errors(),
-                        'content'               => 'admin/bank/update'
-                    ];
-                    $this->load->view('admin/layout/wrapp', $data, FALSE);
-                } else {
-                    $upload_data                = array('uploads'  => $this->upload->data());
-                    $config['image_library']    = 'gd2';
-                    $config['source_image']     = './assets/img/bank/' . $upload_data['uploads']['file_name'];
-                    $config['create_thumb']     = TRUE;
-                    $config['maintain_ratio']   = TRUE;
-                    $config['width']            = 500;
-                    $config['height']           = 500;
-                    $config['thumb_marker']     = '';
-                    $this->load->library('image_lib', $config);
-                    $this->image_lib->resize();
+            $data = [
+                'title'                 => 'Edit Bank',
+                'bank'                  => $bank,
+                'content'               => 'admin/bank/update'
+            ];
+            $this->load->view('admin/layout/wrapp', $data, FALSE);
+        } else {
 
-                    if ($bank->bank_logo != "") {
-                        unlink('./assets/img/bank/' . $bank->bank_logo);
-                    }
-
-                    $data  = [
-                        'id'                    => $id,
-                        'user_id'               => $this->session->userdata('id'),
-                        'bank_name'             => $this->input->post('bank_name'),
-                        'bank_number'           => $this->input->post('bank_number'),
-                        'bank_account'          => $this->input->post('bank_account'),
-                        'bank_branch'           => $this->input->post('bank_branch'),
-                        'bank_logo'             => $upload_data['uploads']['file_name'],
-                        'date_updated'          => time()
-                    ];
-                    $this->bank_model->update($data);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah di Update</div>');
-                    redirect(base_url('admin/bank'), 'refresh');
-                }
-            } else {
-                if ($bank->bank_logo != "")
-                    $data  = [
-                        'id'                    => $id,
-                        'user_id'               => $this->session->userdata('id'),
-                        'bank_name'             => $this->input->post('bank_name'),
-                        'bank_number'           => $this->input->post('bank_number'),
-                        'bank_account'          => $this->input->post('bank_account'),
-                        'bank_branch'           => $this->input->post('bank_branch'),
-                        'date_updated'          => time()
-                    ];
-                $this->bank_model->update($data);
-                $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah di Update</div>');
-                redirect(base_url('admin/bank'), 'refresh');
-            }
+            $data  = [
+                'id'                    => $id,
+                'user_id'               => $this->session->userdata('id'),
+                'bank_name'             => $this->input->post('bank_name'),
+                'bank_number'           => $this->input->post('bank_number'),
+                'bank_account'          => $this->input->post('bank_account'),
+                'bank_branch'           => $this->input->post('bank_branch'),
+                'date_updated'          => time()
+            ];
+            $this->bank_model->update($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah di Update</div>');
+            redirect(base_url('admin/bank'), 'refresh');
         }
-
-        $data = [
-            'title'             => 'Update Bank',
-            'bank'              => $bank,
-            'content'           => 'admin/bank/update'
-        ];
-        $this->load->view('admin/layout/wrapp', $data, FALSE);
     }
+
 
     public function delete($id)
     {

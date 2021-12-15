@@ -161,19 +161,29 @@ $meta = $this->meta_model->get_meta();
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?php foreach ($bank as $bank) : ?>
+                                Bank : <b><?php echo $bank->bank_name; ?></b><br>
+                                Nomor Rek. : <b><?php echo $bank->bank_number; ?></b> <br>
+                                Atas Nama : <?php echo $bank->bank_account; ?>
+                                <hr>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="invoice-footer pb-5">
+                                <p class="text-end mb-5 f-w-600">
+                                    Hormat Kami
+                                </p>
 
-                    <div class="invoice-footer pb-5">
-                        <p class="text-end mb-5 f-w-600">
-                            Hormat Kami
-                        </p>
-
-                        <p class="text-end pt-5 f-w-600">
-                            <?php echo $transaction->user_name; ?><br>
-                            (Finance)
-                        </p>
+                                <p class="text-end pt-5 f-w-600">
+                                    <?php echo $transaction->user_name; ?><br>
+                                    (Finance)
+                                </p>
+                            </div>
+                        </div>
 
                     </div>
                     <div class="text pt-5" style="z-index:9999;position:absolute;bottom:0;font-size:12px;">

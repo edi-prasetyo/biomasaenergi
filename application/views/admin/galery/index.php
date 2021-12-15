@@ -38,7 +38,7 @@
                         <?php endif; ?>
                     </td>
                     <td>
-                        <a href="<?php echo base_url('admin/galery/update/' . $data->id); ?>" class="btn btn-info btn-sm"><i class="far fa-edit"></i> Edit</a>
+                        <a href="<?php echo base_url('admin/galery/update/' . $data->id); ?>" class="btn btn-primary btn-sm text-white"><i class="far fa-edit"></i> Edit</a>
                         <?php include "delete.php"; ?>
                     </td>
                 </tr>

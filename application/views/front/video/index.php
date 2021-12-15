@@ -9,30 +9,30 @@
 
 <div class="container">
     <div class="row">
-        <?php foreach ($galery as $galery) : ?>
+        <?php foreach ($video as $video) : ?>
             <div class="col-md-4">
                 <figure class="card">
-                    <a href="" data-bs-toggle="modal" data-bs-target="#View<?php echo $galery->id ?>">
+                    <a href="" data-bs-toggle="modal" data-bs-target="#View<?php echo $video->id ?>">
                         <div class="img-frame">
-                            <img class="card-img" src="<?php echo base_url('assets/img/galery/' . $galery->galery_img); ?>">
+                            <?php echo $video->video_embed; ?>
                         </div>
 
                         <div class="card-body text-center">
-                            <h5 class="title"><?php echo substr($galery->galery_title, 0, 25); ?></h5>
+                            <h5 class="title"><?php echo substr($video->video_title, 0, 25); ?></h5>
                         </div>
                     </a>
                 </figure>
             </div> <!-- col // -->
 
-            <div class="modal fade" id="View<?php echo $galery->id ?>">
+            <div class="modal fade" id="View<?php echo $video->id ?>">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title"><?php echo $galery->galery_title; ?> </h4>
+                            <h4 class="modal-title"><?php echo $video->video_title; ?> </h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <img class="img-fluid" src="<?php echo base_url('assets/img/galery/' . $galery->galery_img); ?>">
+                            <?php echo $video->video_embed; ?>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary pull-left" data-bs-dismiss="modal"><i class="fa fa-close"></i> Close</button>

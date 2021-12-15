@@ -951,3 +951,8 @@ a:link {
 	column-gap: 20px;
 	background-color: #fff;
 }
+.card .img-frame {
+	height: 280px;
+	object-fit: cover;
+	overflow: hidden;
+}

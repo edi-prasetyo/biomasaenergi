@@ -23,7 +23,6 @@ class Product extends CI_Controller
     public function index()
     {
         $meta                           = $this->meta_model->get_meta();
-        $category                       = $this->category_model->get_category();
 
         $this->load->library('pagination');
         $config['base_url']             = base_url('product/index/');
@@ -60,8 +59,8 @@ class Product extends CI_Controller
                 'title'                       => 'Product - ' . $meta->title,
                 'deskripsi'                   => 'Product - ' . $meta->description,
                 'keywords'                    => 'Product - ' . $meta->keywords,
+                'product'                      => $product,
                 'paginasi'                    => $this->pagination->create_links(),
-                'category'                    => $category,
                 'content'                     => 'front/product/index_product'
             );
             $this->load->view('front/layout/wrapp', $data, FALSE);
@@ -73,7 +72,6 @@ class Product extends CI_Controller
                 'keywords'                    => 'Product - ' . $meta->keywords,
                 'paginasi'                    => $this->pagination->create_links(),
                 'product'                      => $product,
-                'category'                    => $category,
                 'content'                     => 'mobile/product/index'
             );
             $this->load->view('mobile/layout/wrapp', $data, FALSE);
@@ -86,7 +84,6 @@ class Product extends CI_Controller
         } else {
             redirect(base_url('product'));
         }
-        $category                       = $this->category_model->get_category();
         $product                         = $this->product_model->read($product_slug);
         // var_dump($product->product_title_id);
         // die;
@@ -98,7 +95,6 @@ class Product extends CI_Controller
                 'deskripsi'                   => 'Product',
                 'keywords'                    => $product->product_keywords,
                 'product'                      => $product,
-                'category'                    => $category,
                 'content'                     => 'front/product/detail'
             );
             $this->add_count($product_slug);
@@ -110,7 +106,6 @@ class Product extends CI_Controller
                 'deskripsi'                   => $product->product_title_id,
                 'keywords'                    => $product->product_keywords,
                 'product'                      => $product,
-                'category'                    => $category,
                 'content'                     => 'mobile/product/detail'
             );
             $this->add_count($product_slug);

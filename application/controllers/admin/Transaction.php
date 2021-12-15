@@ -17,6 +17,7 @@ class Transaction extends CI_Controller
         $this->load->model('transaction_model');
         $this->load->model('customer_model');
         $this->load->model('product_model');
+        $this->load->model('bank_model');
         $this->load->library('pagination');
     }
     public function index()
@@ -300,10 +301,12 @@ class Transaction extends CI_Controller
     }
     public function invoice($id)
     {
+        $bank           = $this->bank_model->get_allbank();
         $transaction = $this->transaction_model->detail($id);
         $data = [
             'title'                   => "Invoice",
             'transaction'             => $transaction,
+            'bank'                    => $bank,
             'content'                 => 'admin/transaction/invoice'
         ];
         $this->load->view('admin/layout/wrapp', $data, FALSE);

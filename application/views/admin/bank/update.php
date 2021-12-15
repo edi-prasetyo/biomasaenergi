@@ -18,7 +18,7 @@
             echo form_open_multipart('admin/bank/update/' . $bank->id);
             ?>
 
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-lg-3 col-form-label">Nama Bank <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-9">
@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-lg-3 col-form-label">Nomor Rekening <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-9">
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-lg-3 col-form-label">Atas Nama <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-9">
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row mb-3">
                 <label class="col-lg-3 col-form-label">Cabang <span class="text-danger">*</span>
                 </label>
                 <div class="col-lg-9">
@@ -50,26 +50,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label class="col-lg-3 col-form-label">Ubah Logo <span class="text-danger">*</span>
-                </label>
-                <div class="col-lg-9">
-                    <div class="input-group mb-3">
-                        <div class="input-group">
-                            <div class="custom-file mb-3">
-                                <input type="file" name="bank_logo" class="custom-file-input" id="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
-                                <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-                            </div>
-
-                        </div>
-
-                        <img class="img-fluid" src="<?php echo base_url('assets/img/bank/' . $bank->bank_logo); ?>" width="40%">
-                    </div>
-                </div>
-            </div>
-
-
-
+    
             <div class="form-group row">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-9">

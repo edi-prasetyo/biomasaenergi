@@ -1,16 +1,4 @@
-<div class="breadcrumb">
-    <div class="container">
-        <div class="col-md-10 mx-auto">
-            <ul class="breadcrumb my-3">
-                <li class="breadcrumb-item"><a href="<?php echo base_url('') ?>"><i class="ti ti-home"></i> Home</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo base_url('product') ?>"> Berita</a></li>
-
-                <li class="breadcrumb-item active"><?php echo $title ?></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<div class="container mb-3">
+<div class="container mb-3 my-5">
     <div class="col-md-10 mx-auto">
         <div class="row">
             <div class="col-md-10 mx-auto">
