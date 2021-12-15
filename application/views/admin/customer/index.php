@@ -42,5 +42,11 @@
             }; ?>
         </table>
     </div>
-
+    <div class="card-footer bg-white">
+        <div class="pagination col-md-12 text-center">
+            <?php if (isset($pagination)) {
+                echo $pagination;
+            } ?>
+        </div>
+    </div>
 </div>
