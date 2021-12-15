@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Edit<?php echo $data->id; ?>">
+<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#Edit<?php echo $data->id; ?>">
     <i class="fa fa-edit"></i> Edit
 </button>
 
@@ -7,7 +7,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Tambah Kategori</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
 
             </div>
@@ -36,7 +36,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary pull-right" data-dismiss="modal"><i class="fa fa-close"></i> Tutup</button>
+                <button type="button" class="btn btn-outline-secondary pull-right" data-bs-dismiss="modal"><i class="fa fa-close"></i> Tutup</button>
 
             </div>
         </div>
