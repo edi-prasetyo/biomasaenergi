@@ -29,7 +29,7 @@ class Menu extends CI_Controller
   public function create()
   {
     $this->form_validation->set_rules(
-      'menu_id',
+      'name_id',
       'Nama Menu Indonesia',
       'required',
       [
@@ -37,13 +37,15 @@ class Menu extends CI_Controller
       ]
     );
     $this->form_validation->set_rules(
-      'url',
-      'Url',
-      'required',
+      'urutan',
+      'Urutan',
+      'required|is_unique[menu.urutan]',
       [
-        'required'                => 'Url Harus di isi',
+        'required'                => 'Nama Menu Indonesia Email harus di isi',
+        'is_unique'               => 'nomor Urut sudah ada, Gunakan nomor lain'
       ]
     );
+
     if ($this->form_validation->run() == false) {
       $data = [
         'title'                   => "Create menu",
@@ -52,11 +54,11 @@ class Menu extends CI_Controller
       $this->load->view('admin/layout/wrapp', $data, FALSE);
     } else {
       $data = [
-        'name_en'           => $this->input->post('name_en'),
-        'name_id'           => $this->input->post('name_id'),
+        'name_en'                 => $this->input->post('name_en'),
+        'name_id'                 => $this->input->post('name_id'),
         'url'                     => $this->input->post('url'),
         'urutan'                  => $this->input->post('urutan'),
-        'created_at'            => date('Y-m-d H:i:s')
+        'created_at'              => date('Y-m-d H:i:s')
       ];
       $this->menu_model->create($data);
       $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah ditambahkan</div>');
@@ -74,6 +76,15 @@ class Menu extends CI_Controller
         'required'                => 'Nama Menu Indonesia Email harus di isi',
       ]
     );
+    $this->form_validation->set_rules(
+      'urutan',
+      'Urutan',
+      'required|is_unique[menu.urutan]',
+      [
+        'required'                => 'Nama Menu Indonesia Email harus di isi',
+        'is_unique'               => 'nomor Urut sudah ada, Gunakan nomor lain'
+      ]
+    );
     if ($this->form_validation->run() == false) {
       $data = [
         'title'                   => "Update menu",
@@ -84,11 +95,11 @@ class Menu extends CI_Controller
     } else {
       $data = [
         'id'                      => $id,
-        'name_en'           => $this->input->post('name_en'),
-        'name_id'           => $this->input->post('name_id'),
+        'name_en'                 => $this->input->post('name_en'),
+        'name_id'                 => $this->input->post('name_id'),
         'url'                     => $this->input->post('url'),
         'urutan'                  => $this->input->post('urutan'),
-        'updated_at'            => date('Y-m-d H:i:s')
+        'updated_at'              => date('Y-m-d H:i:s')
       ];
       $this->menu_model->update($data);
       $this->session->set_flashdata('message', '<div class="alert alert-success">Data telah di ubah</div>');
