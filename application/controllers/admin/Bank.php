@@ -16,12 +16,6 @@ class Bank extends CI_Controller
         $this->load->model('bank_model');
         $this->load->library('pagination');
         $this->load->library('upload');
-
-        $id = $this->session->userdata('id');
-        $user = $this->user_model->user_detail($id);
-        if ($user->role_id == 2) {
-            redirect('admin/dashboard');
-        }
     }
 
     public function index()
