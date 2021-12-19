@@ -51,7 +51,7 @@ $meta = $this->meta_model->get_meta();
         </div>
         <div id="section-to-print">
             <div id="source-html">
-                <div class="card-body mb-5" style="height: 900px;">
+                <div class="card-body mb-5" style="height: 1000px;">
                     <div class="row">
                         <div class="col-6">
                             <img width="90%" src="<?php echo base_url('assets/img/logo/' . $meta->logo); ?>" class="img-fluid">
@@ -163,8 +163,8 @@ $meta = $this->meta_model->get_meta();
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
+                    <div class="d-flex justify-content-between align-items-start my-5 mt-5 pt-5" style="position:absolute;bottom:180px;width:90%">
+                        <div>
                             <?php foreach ($bank as $bank) : ?>
                                 Bank : <b><?php echo $bank->bank_name; ?></b><br>
                                 Nomor Rek. : <b><?php echo $bank->bank_number; ?></b> <br>
@@ -172,20 +172,22 @@ $meta = $this->meta_model->get_meta();
                                 <hr>
                             <?php endforeach; ?>
                         </div>
-                        <div class="col-md-6">
-                            <div class="invoice-footer pb-5">
-                                <p class="text-end mb-5 f-w-600">
-                                    Hormat Kami
-                                </p>
+                        <div>
+                            <p class="text-end pb-5 mb-5">
+                                Hormat Kami
+                            </p>
+                            <br>
+                            <br>
 
-                                <p class="text-end pt-5 f-w-600">
-                                    <?php echo $transaction->user_name; ?><br>
-                                    (Finance)
-                                </p>
-                            </div>
+
+                            <p class="text-end mt-5">
+                                <?php echo $transaction->user_name; ?><br>
+                                (Finance)
+                            </p>
                         </div>
 
                     </div>
+
                     <div class="text pt-5" style="z-index:9999;position:absolute;bottom:0;font-size:12px;">
                         <p class="text-center"><?php echo $meta->alamat; ?></p>
                         <p class="text-center">
