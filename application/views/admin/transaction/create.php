@@ -137,7 +137,7 @@
 
 
 
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="form-group">
                         <label for="example-text-input" class="col-form-label">Pembayaran <span class="text-danger">*</span></label>
                         <select class="form-select" name="payment" aria-label="Default select example" required>
@@ -147,6 +147,13 @@
                             <option value="14">14 Hari</option>
                         </select>
                         <div class="invalid-feedback">Pilih Pembayaran.</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="example-text-input" class="col-form-label">Nomor PO <span class="text-success">* ( Optional )</span></label>
+                        <input class="form-control" type="text" name="po_number" placeholder="Nomor PO" autocomplete="off">
+
                     </div>
                 </div>
 

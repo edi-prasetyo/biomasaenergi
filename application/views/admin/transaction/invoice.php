@@ -68,8 +68,18 @@ $meta = $this->meta_model->get_meta();
                                 <strong class="text-inverse"><?php echo $transaction->company; ?></strong><br>
                                 <?php echo $transaction->address; ?><br>
                                 <?php echo $transaction->city_name; ?>, <?php echo $transaction->province_name; ?>, <?php echo $transaction->postal_code; ?><br>
-                                Phone: <?php echo $transaction->phone; ?><br>
-                                Whatsapp: <?php echo $transaction->whatsapp; ?>
+                                <?php if ($transaction->po_number == null) : ?>
+                                <?php else : ?>
+                                    PO Number : <?php echo $transaction->po_number; ?><br>
+                                <?php endif; ?>
+                                <?php if ($transaction->phone == null) : ?>
+                                <?php else : ?>
+                                    Phone: <?php echo $transaction->phone; ?><br>
+                                <?php endif; ?>
+                                <?php if ($transaction->whatsapp == null) : ?>
+                                <?php else : ?>
+                                    Whatsapp: <?php echo $transaction->whatsapp; ?>
+                                <?php endif; ?>
                             </address>
                         </div>
 
@@ -80,7 +90,7 @@ $meta = $this->meta_model->get_meta();
                             <?php if ($transaction->payment == 'transfer') : ?>
                                 Status Bayar : <?php echo $transaction->payment_status; ?>
                             <?php else : ?>
-                                Tanggal Jatuh Tempo: <?php echo date('d/m/Y', strtotime($transaction->due_date)); ?><br>
+                                Tanggal Jatuh Tempo: <span class="text-danger fw-bold"><?php echo date('d/m/Y', strtotime($transaction->due_date)); ?></span><br>
                                 Status Bayar : <?php echo $transaction->payment_status; ?>
                             <?php endif; ?>
                         </div>
@@ -156,7 +166,7 @@ $meta = $this->meta_model->get_meta();
 
                                     <tr>
                                         <td colspan="4" class="text-end fw-bold">Grand Total</td>
-                                        <td colspan="2">Rp. <?php echo number_format($transaction->grand_total, 0, ",", "."); ?></td>
+                                        <td colspan="2" class="fw-bold">Rp. <?php echo number_format($transaction->grand_total, 0, ",", "."); ?></td>
                                     </tr>
                                 </tbody>
                             </table>

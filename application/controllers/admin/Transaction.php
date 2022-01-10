@@ -96,11 +96,11 @@ class Transaction extends CI_Controller
             $input_value_1             = $this->input->post('input_value_1');
             $value_1                   = preg_replace('/\D/', '', $input_value_1);
 
-            $input_value_2         = $this->input->post('input_value_2');
-            $value_2               = preg_replace('/\D/', '', $input_value_2);
+            $input_value_2             = $this->input->post('input_value_2');
+            $value_2                   = preg_replace('/\D/', '', $input_value_2);
 
-            $input_value_3         = $this->input->post('input_value_3');
-            $value_3               = preg_replace('/\D/', '', $input_value_3);
+            $input_value_3             = $this->input->post('input_value_3');
+            $value_3                   = preg_replace('/\D/', '', $input_value_3);
 
             $total_price_buy           = (int)$qty * (int)$price_buy;
             $total_price_sell          = (int)$qty * (int)$price_sell;
@@ -141,6 +141,7 @@ class Transaction extends CI_Controller
                 'value_3'                   => $value_3,
                 'grand_total'               => $grand_total,
                 'payment'                   => $this->input->post('payment'),
+                'po_number'                 => $this->input->post('po_number'),
                 'payment_status'            => 'Paid',
                 'created_at'                => date('Y-m-d H:i:s')
             ];
